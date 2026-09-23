@@ -86,11 +86,11 @@ void p401WriteDOUT(uint8_t byte, uint8_t value)
 /*----------------------------------------------------------------------------*/
 static void p401SetDoutErrValue(void)
 {
-    for (uint8_t i = 0; i <= P401_DOUT_BYTES * CHAR_BIT; i++)
+    for (uint8_t i = 0; i < P401_DOUT_BYTES * CHAR_BIT; i++)
     {
         uint8_t bit               = i % CHAR_BIT;
         uint8_t byte              = i / CHAR_BIT;
-        uint8_t errValue          = p401DOErrorMode[byte] & p401DOErrorVal[byte];
+        uint8_t errValue          = p401DOErrorMode[byte + 1] & p401DOErrorVal[byte + 1];
         p401DOWrite8Bit[byte + 1] = errValue;
         bool pinErrState          = (p401DOWrite8Bit[byte + 1] & (1U << bit)) == 0 ? false : true;
         bspDoutSet(i, pinErrState);

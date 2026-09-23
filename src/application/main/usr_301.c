@@ -1156,6 +1156,13 @@ BOOL_T canErrorInd(UNSIGNED8 errorFlags         /**< CAN error flags */
 {
     BOOL_T ret = CO_TRUE;    // return value
 
+    // CAN controller is active again (e.g. after bus-off recovery):
+    // clear the latched bus errors so the error-based safe state is left.
+    if ((errorFlags & CANFLAG_ACTIVE) != 0)
+    {
+        clear_error(ERR_MAN_CANOPEN, ERR_CANOPEN_BUS_OFF);
+        clear_error(ERR_MAN_CANOPEN, ERR_CANOPEN_PASSIVE);
+    }
 
     // CAN error passive
     if ((errorFlags & CANFLAG_PASSIVE) != 0)
