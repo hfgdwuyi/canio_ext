@@ -1,0 +1,42 @@
+:scan:canbus?
+:send:nmt 1 nodeid			//start Operational mode
+[CANOPEN_STRESS_TEST]
+//Define parameters
+:define:var pdo_req_period1 U16 50 		//range it from 1 to 100 ms
+:define:var macro_duration U32 10000	//range it from 1000 to 1200000 min
+:define:var digOUT1 U16 500				//for analog output RPDO
+:define:can_msg RPDO1 0x300 + nodeid 4
+:assign:vars2can_msg RPDO1 digOUT1
+:define:var digOUT u8 0x00
+:define:can_msg RPDO 0x200 + nodeid 4
+:assign:vars2can_msg RPDO digOUT
+
+
+:read:set:all_output_log stress_can_log_{DATE_REVERSE_TIME}.txt? 
+:read:set:command_timeout 5000?
+:define:var i u8 0
+:define:var period_count u8 0
+:compute:var period_count = macro_duration / pdo_req_period1?
+:print:string Period count is = [period_count]
+do_while? i < period_count
+:read:sdo nodeid 0x6000 1?
+:read:sdo nodeid 0x6000 2?
+:send:can_msg RPDO
+:send:can_msg RPDO1
+:wait:time pdo_req_period1
+do_if digOUT1 != 3300?
+:compute:var digOUT1 = digOUT1 + 200?
+do_else?
+:compute:var digOUT1 = digOUT1 - 2800?
+done_if
+:compute:var i = i + 1?
+do_if digOUT != 0x0F?
+:compute:var digOUT = digOUT + 1?
+do_else?
+:compute:var digOUT = digOUT - 0x0F?
+done_if
+done_while
+:read:set:all_output_log 0?
+:read:set:all_output_log close?
+:delete:can_msg RPDO1
+[END]

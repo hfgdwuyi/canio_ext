@@ -1,0 +1,216 @@
+CANopen driver directory
+======================================================================
+
+56807		Freescale DSP 56807 (DSP, msCAN)
+56f8300		Freescale MC56F8300 (Hybrid, FlexCAN)
+mc56f827    Freescale MC56F827xx (Hybrid, msCAN)
+am335x		TI sitara (ARM Cortex A8, internal DCAN)
+am437x		TI sitara (ARM Cortex A9, internal DCAN)
+at32uc3c	Atmel AT32UC3C0512 (AVR 32bit, internal CAN)
+at89c51		Atmel AT89C51CC03 (8051, CANary)
+avr		Atmel AT90CAN128 (AVR, CANary)
+at91sam7a3	Atmel AT91SAM7A3 (ARM7, internal CAN)
+at91sam7x	Atmel AT91SAM7X (ARM7, internal CAN)
+atsam4e		Atmel ATSAM4E (ARM Cortex-M4, internal CAN)
+atsam4e_uCOSII	Atmel ATSAM4E with uCOSII (ARM Cortex-M4, internal CAN)
+atsam4e_freertos	Atmel ATSAM4E with FreeRTOS (ARM Cortex-M4, internal CAN)
+ac2		driver for Softing's AC2
+apc		port's APC Hardware (68332 82527 m68k-coff-gcc)
+atcandos        port's AT-CAN-MINI PC card (80x86, SJA1000, DOS, BC45)
+atc_win         port's AT-CAN-MINI PC card (W95, BC5)
+aurix_tc23xx  infineon MultiCAN+
+can232		CAN232 interface
+cpc		EMS Wünsche CPC PC interfaces (Multi Line)
+                (WIN32, /* BC55, */ Visual C++ 2010)
+		Borland C not longer supported
+c8051f040	SiLabs C8051F040 (8051, C_CAN, 3SFR Register)
+c8051f500	SiLabs C8051F500 (8051, C_CAN, SFR Page)
+dsm		port's DSM Hardware (68332 82c200 m68k-coff-gcc)
+dspic30f	Microchip dsPIC30F6014 board
+dspic33f	Microchip dsPIC33F256GP710 board
+dspic33epxx Microchip dsPIC33EP512x (with ECAN)
+dspic33evxx Microchip dsPIC33EV256x (with ECAN)
+fuj90540	Fujitsu F2MC16LX CPU's (MB90F543, MB90F497)
+fuj91467	Fujitsu FR60 CPU's (MB91460 family, C_CAN)
+fuj96340	Fujitsu F2MC16FX CPU's (MB96348)
+mb9b524k	Fujitsu  MB9B524K cpu (FM3 family, C_CAN)
+mb9bf51x    Fujitsu/Spansion  MB9BF51x cpu (FM3 family, C_CAN)
+f28m35x     TI C2000 Concerto F28M35x
+dstni		DSTni-Ex hardware
+gelmados	Gelma Terminal (80x86, 82527, DOS, BC45)
+generic		generic driver without CAN hardware
+		usefull for new drivers
+gnu_68k		shared resources for GNU m68k environment
+h8sx		Renesas H8SX/1725
+hc908		68HC908GZ16/GZ60 (HC08, msCAN)
+horch_windows	horch from windows PC
+mc9s08		MC9S08DZ60 (HCS08, msCAN)
+hcs12		Freescale HCS12 CPU (HCS12, msCAN)
+ipc_143		BECK IPC 143
+ixxat_vci   IXXAT (by HMS) windows PC interface
+k2x			Freescale Kinetis K2x (ARM cortexM4, FlexCan)
+k10_k60		Freescale Kinetis K10/K60 (ARM cortexM4, FlexCan)
+k10_k60_uCOSII	Freescale Kinetis K10/K60 with uCOSII support (ARM cortexM4, FlexCan)
+ke06		Freescale Kinetis KE06 (ARM cortexM0, MSCAN)
+l2_ac2		Layer-2 driver for Softing's AC2
+l2_atc_win      Layer-2 driver AT-CAN-MINI W95
+l2_cpcarm       Layer-2 driver for the EtherCAN hardware
+l2_cpcwin       Layer-2 driver for EMS Wünsche interfaces and Win9x
+l2_cpcnt        Layer-2 driver for EMS Wünsche interfaces and WinNT
+l2_lx           Layer-2 driver for I+ME interfaces
+l2_p_d_win	Layer-2 driver for Peak Dongle
+l2_nray		Layer-2 driver for Proteus from Interay
+linux		can4linux, SocketCAN
+lx	        I+ME's Level X interface Boards (PCMCIA, PC104, ISA, PCI...)
+lm3s2900	Luminary (Stellaris) Cortex-M3 CPU (lm3s2965)
+lpc1768		NXP LPC1768 (Cortex-M3, internal CAN)
+lpc15xx		NXP LPC1549 (Cortex-M3, Bosch C_CAN)
+lpc1778_1788 NXP LPC1778_1788 (Cortex-M3, internal CAN)
+lpc4078_4088 NXP LPC4078_4088 (Cortex-M4, internal CAN)
+lpc2129		NXP LPC2129 (ARM7, internal CAN)
+lpc43xx		NXP LPC43xx (ARM Cortex-M4/M0 multicore, Bosch C_CAN)
+m16c29		Renesas M16C/29 
+mod167		phytec's Minimodul 167 (C167CR, Keil C166, 82527)
+mod515c		phytec's Minimodul 515 (515C, Keil C51, 82527)
+mod505c		phytec's Minimodul 505 (505C, Keil C51, 82527)
+mpc56x		Axion MPC566EVB board (MPC566, CodeWarrior MPC5xx Ed.)
+msp432x_freertos  TI MSP432E4x with FreeRTOS
+nray		Proteus hardware from Interay
+p_d_dos		peak's CAN dongle (80x86, 82c200, DOS, BC45)
+p_d_win		peak's CAN dongle (80x86, 82c200, Win95, NT, VC)
+pd70f3231	NEC PD70F3231 Drive It board (V850ES, aFCAN, IAR)
+pd70f3580	NEC PD70F3580 Drive It board (Renesas Starterkit V850E2/FG4-L, FCN, IAR)
+pd70f4022	Renesas V850E2/ML4
+pd70f3377	Renesas NEC V850 CAN it! board (V850ES, aFCAN, IAR)
+pd70f3371	Renesas NEC V850 (aFCAN, IAR)
+pic18f		Microchip PIC18F2680 (PIC18F, ECAN in CAN mode)
+pic32mx		Microchip PIC32MX795F512L (PIC32 family)
+qnx         Xilinx ZYNC Ultrascale+ with QNX
+rh850       Renesas RH850
+rzt1_r4f    Renesas RZ/T1 (R4F core)
+rx63n       Renesas RX63N
+rx62n       Renesas RX62N
+rx64m       Renesas RX64M
+rx65n_freertos  Renesas RX65N with FreeRTOS
+rx71m       Renesas RX71M
+rx72m       Renesas RX72M
+rx231       Renesas RX231
+rl78f13     Renesas RL78F13 
+rl78f14     Renesas RL78F14
+r-in32m3    Renesas R-IN32M3
+s32k144		NXP S32K144 (FlexCAN)
+s12z        NXP S12Z (MSCAN)
+sh72544r	Renesas SH72544r (RCAN)
+shar_dos	shared cpu driver for DOS
+shar_inc	shared includes for CAN and CPU driver 
+shar_src	shared sources for all CAN drivers
+stm32		ST STM32 (bxCAN)
+stm32_f105_107 ST STM32F105/107 (bxCAN)
+stm32_f2	ST STM32F2xx (bxCAN)
+stm32_f4	ST STM32F4xx (bxCAN)
+stm32_g4	ST STM32G4xx (FDCAN)
+stm32_h7	ST STM32G4xx (FDCAN)
+stm32_f413	ST STM32F413 (3x bxCAN)
+stm32_f4_keil_rtx	ST STM32F4xx (bxCAN) with Keil RTX
+stm32_f0	ST STM32F0xx (bxCAN)
+stm32_f3	ST STM32F3xx (bxCAN)
+stm32_l4	ST STM32L4xx (bxCAN)
+stm32_l4_freertos	ST STM32L4xx (bxCAN) with FreeRTOS and CAN sleep
+stm32_f4_freertos	ST STM32F4xx (bxCAN) with FreeRTOS
+stm32_f7	ST STM32F7xx (bxCAN)
+stm32_f7_freertos	ST STM32F7xx (bxCAN) with FreeRTOS
+str730		STMicroelectronics STR730 
+str911		STMicroelectronics STR911 (C_CAN)
+synergy     Renesas Synergy plattform
+tini		tini interface
+tms320_24x	Texas Instruments TMS320F2407A
+tms320_28x	Texas Instruments TMS320F2808, TMS320F2812, 28335 (DSP, eCAN)
+tms320f28377 Texas Instruments TMS320F28377 (D_CAN)
+tms320f28075 Texas Instruments Piccolo TMS320F28075 (D_CAN)
+tms320f28035 Texas Instruments TMS320F28035 (eCAN)
+tms320f28379_sysbios Texas Instruments TMS320F28379 (DCAN) with sysbios
+tms320f28379_with_mcp2517fd_sysbios Texas Instruments TMS320F28379 with extended MCP2517FD CAN and sysbios
+ms320f28379_with_mcp2517fd_sysbios_cpu1  ,, (dual core operation on cpu1)
+ms320f28379_with_mcp2517fd_sysbios_cpu2  ,, (dual core operation on cpu2)
+tms320dm643x Texas Instruments TMS320DM6435 (Digital Media CPU, HECC) with sysbios and autobaud
+tms470		Texas Instruments TMS470R1B1M (ARM7, HECC)
+tms570ls	Texas Instruments Hercules (ARM Cortex-R4F)
+tms570lc	Texas Instruments Hercules (ARM Cortex-R4F)
+tivatm4c		Texas Instruments Tiva TM4C (D_CAN)
+tivatm4c123g	Texas Instruments Tiva TM4C123G (D_CAN)
+tivatm4c_freertos	Texas Instruments Tiva TM4C (D_CAN) with FreeRTOS and Heap
+vector      Vector XL Driver Library
+vxworks		VxWorks driver
+xc164		Infineon XC164 (XC166, TwinCAN)
+xe164 		Infineon XE164 (XE166, MultiCAN)
+xmc4500     Infineon MultiCAN
+xmc4800     Infineon MultiCAN+
+xmc4200     Infineon MultiCAN
+xmc4300     Infineon MultiCAN+
+xilinx_zync7020   xilinx XCAN
+
+Install Instructions
+===================================================
+The installation instruction for the drivers to
+certain operating systems such as Windows NT, Win9x, LINUX
+or QNX is to be found in the appropriate level-2 driver
+subdirectories l2_*.
+If it is us allowed we also provide all drivers, DLLs or setup procedures
+in these subdirectories.
+
+Require defines
+===================================================
+You have to check and to adapt the following defines:
+
+XDATA
+CODE
+FAR
+CO_DATA
+CO_CONST
+
+If you adapt a define, create a header and include
+this in your cal_conf.h.
+The Design Tool has a special entry
+for it.
+
+
+How to create a CANopen driver package with CPU and CAN driver 
+=============================================================
+The  driver package contains 
+1) common CPU driver - located at shar_src/cpu_x
+2) common CAN driver - located at shar_src/can_x
+3) Compiler header   - located at shar_inc/co_x
+4) common files      - located at shar_src/cdriver.c
+
+If you want to use common functionality, you have to set CONFIG_COLIB_xxx
+in your configuration (DesignTool -> cal_conf.h)
+
+5) special Initialization, CPU functionality and CAN functionality
+		     - put it in your own directory
+
+DO NOT CHANGE anything in the shar_src/ directory.
+Move the function you want to change in your own files and deactivate
+the CONFIG_COLIB_xxx configuration.
+If it is not possible, write to service@port.de.
+
+
+Adapt the CPU driver
+=============================================================
+The CPU driver comprises 
+- interrupts enable/disable
+- time base
+
+Adapt the CAN driver
+===================================================
+The access to the CAN controller requires the following macros.
+
+CAN_ADDR() 
+CAN_READ()
+CAN_WRITE()
+CAN_SET_BIT()
+CAN_RESET_BIT()
+CAN_TEST_BIT()
+are require.
+
+Please check the CAN controller header file (shar_inc/can...)!
+

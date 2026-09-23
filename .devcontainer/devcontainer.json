@@ -1,0 +1,29 @@
+{
+    "name": "embeddedArm",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools",
+                "marus25.cortex-debug",
+                "mcu-debug.debug-tracker-vscode",
+                "ms-python.python",
+                "sonarsource.sonarlint-vscode"
+            ]
+		}
+	},
+    "remoteUser": "root",
+    "mounts": [
+        "source=/dev,target=/dev,type=bind"
+    ],
+    "runArgs": [ 
+        "-it",
+        "--privileged"
+    ]
+}

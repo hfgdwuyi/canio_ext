@@ -1,0 +1,575 @@
+; This EDS file was created by the Industrial Communication Creator with CANopen feature V7.0.0.202112202107.
+; port GmbH Halle/Saale Germany, http://www.port.de, mailto: service@port.de
+
+[FileInfo]
+FileName=bootloader.eds
+FileVersion=1
+FileRevision=0
+EDSVersion=4.0
+Description=CANopen device using port's CANopen library
+CreationTime=17:03PM
+CreationDate=04-23-2026
+CreatedBy=Viktor Timkov
+ModificationTime=17:03PM
+ModificationDate=04-23-2026
+ModifiedBy=Viktor Timkov
+
+[DeviceInfo]
+VendorName=Siemens Healthineers
+VendorNumber=0x500053
+ProductName=CANopen Device
+ProductNumber=0x0
+RevisionNumber=0x0
+OrderCode=
+BaudRate_10=0
+BaudRate_20=0
+BaudRate_50=0
+BaudRate_125=0
+BaudRate_250=0
+BaudRate_500=0
+BaudRate_800=0
+BaudRate_1000=0
+DynamicChannelsSupported=0
+GroupMessaging=0
+LSS_Supported=0
+Granularity=0
+SimpleBootUpSlave=1
+SimpleBootUpMaster=0
+NrOfRXPDO=0
+NrOfTXPDO=0
+
+[Comments]
+Lines=0
+
+[DummyUsage]
+Dummy0001=0
+Dummy0002=0
+Dummy0003=0
+Dummy0004=0
+Dummy0005=1
+Dummy0006=1
+Dummy0007=1
+
+[MandatoryObjects]
+SupportedObjects=3
+1=0x1000
+2=0x1001
+3=0x1018
+
+[OptionalObjects]
+SupportedObjects=11
+1=0x1002
+2=0x1008
+3=0x1009
+4=0x100A
+5=0x1010
+6=0x1011
+7=0x1014
+8=0x1015
+9=0x1017
+10=0x1F50
+11=0x1F51
+
+[ManufacturerObjects]
+SupportedObjects=7
+1=0x2008
+2=0x2009
+3=0x2018
+4=0x2100
+5=0x2101
+6=0x2102
+7=0x2200
+
+[1000]
+ParameterName=Device Type
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00070191
+PDOMapping=0
+
+[1001]
+ParameterName=Error Register
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+PDOMapping=0
+
+[1002]
+ParameterName=Manufacturer Status Register
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1008]
+ParameterName=Manufacturer Device Name
+ObjectType=0x07
+DataType=0x0009
+AccessType=const
+DefaultValue=STM32H750B-DK
+PDOMapping=0
+
+[1009]
+ParameterName=Manufacturer Hardware Version
+ObjectType=0x07
+DataType=0x0009
+AccessType=const
+PDOMapping=0
+
+[100A]
+ParameterName=Manufacturer Software Version
+ObjectType=0x07
+DataType=0x0009
+AccessType=const
+PDOMapping=0
+
+[1010]
+SubNumber=5
+ParameterName=Store Parameter Field
+ObjectType=0x08
+
+[1010sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0x7F
+
+[1010sub1]
+ParameterName=Save all Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+
+[1010sub2]
+ParameterName=Save Communication Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+
+[1010sub3]
+ParameterName=Save Application Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+
+[1010sub4]
+ParameterName=Save Asset Data
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+
+[1011]
+SubNumber=5
+ParameterName=Restore Default Parameters
+ObjectType=0x08
+
+[1011sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x04
+PDOMapping=0
+
+[1011sub1]
+ParameterName=Restore all Default Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+ObjFlags=0x00000001
+
+[1011sub2]
+ParameterName=Restore Communication Default Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+ObjFlags=0x00000001
+
+[1011sub3]
+ParameterName=Restore Application Default Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+ObjFlags=0x00000001
+
+[1011sub4]
+ParameterName=Restore Asset Data Default Parameters
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+PDOMapping=0
+ObjFlags=0x00000001
+
+[1014]
+ParameterName=COB-ID EMCY
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NODEID+0x00000080
+PDOMapping=0
+
+[1015]
+ParameterName=Inhibit Time Emergency
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x0000
+PDOMapping=0
+
+[1017]
+ParameterName=Producer Heartbeat Time
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x03E8
+PDOMapping=0
+
+[1018]
+SubNumber=5
+ParameterName=Identity Object
+ObjectType=0x09
+
+[1018sub0]
+ParameterName=number of entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x01
+HighLimit=0x04
+
+[1018sub1]
+ParameterName=Vendor Id
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00500053
+PDOMapping=0
+
+[1018sub2]
+ParameterName=Product Code
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+
+[1018sub3]
+ParameterName=Revision number
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1018sub4]
+ParameterName=Serial number
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1F50]
+SubNumber=2
+ParameterName=Download Program Data
+ObjectType=0x08
+
+[1F50sub0]
+ParameterName=Highest Sub-index Supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x01
+PDOMapping=0
+LowLimit=0x01
+HighLimit=0xFE
+
+[1F50sub1]
+ParameterName=Program Area 1
+ObjectType=0x07
+DataType=0x000F
+AccessType=rw
+PDOMapping=0
+
+[1F51]
+SubNumber=2
+ParameterName=Program Control
+ObjectType=0x08
+
+[1F51sub0]
+ParameterName=Highest Sub-index Supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x01
+PDOMapping=0
+LowLimit=0x01
+HighLimit=0xFF
+
+[1F51sub1]
+ParameterName=Program Number 1
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2008]
+ParameterName=Manufacturer Device Name Setup
+ObjectType=0x07
+DataType=0x0009
+AccessType=rw
+DefaultValue=STM32H750B-DK
+PDOMapping=0
+
+[2009]
+ParameterName=Manufacturer HW Version Setup
+ObjectType=0x07
+DataType=0x0009
+AccessType=rw
+DefaultValue=B02
+PDOMapping=0
+
+[2018]
+SubNumber=5
+ParameterName=Identity Object Setup
+ObjectType=0x09
+
+[2018sub0]
+ParameterName=numOfEntries
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x01
+HighLimit=0x04
+
+[2018sub1]
+ParameterName=vendorId
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00500053
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2018sub2]
+ParameterName=productCode
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2018sub3]
+ParameterName=revisionNumber
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2018sub4]
+ParameterName=serialNumber
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2100]
+ParameterName=CAN Configuration
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x00
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2101]
+SubNumber=5
+ParameterName=Node IDs Table
+ObjectType=0x08
+
+[2101sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2101sub1]
+ParameterName=Node ID 0 
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0x30
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2101sub2]
+ParameterName=Node ID 1 
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0x30
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2101sub3]
+ParameterName=Node ID 2 
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0x30
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2101sub4]
+ParameterName=Node ID 3 
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0x30
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2102]
+SubNumber=5
+ParameterName=Baudrates Table
+ObjectType=0x08
+
+[2102sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2102sub1]
+ParameterName=Baudrate 0
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x01F4
+PDOMapping=0
+LowLimit=0x0000
+HighLimit=0xFFFF
+
+[2102sub2]
+ParameterName=Baudrate 1
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x01F4
+PDOMapping=0
+LowLimit=0x0000
+HighLimit=0xFFFF
+
+[2102sub3]
+ParameterName=Baudrate 2
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x01F4
+PDOMapping=0
+LowLimit=0x0000
+HighLimit=0xFFFF
+
+[2102sub4]
+ParameterName=Baudrate 3
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x01F4
+PDOMapping=0
+LowLimit=0x0000
+HighLimit=0xFFFF
+
+[2200]
+SubNumber=5
+ParameterName=Manufacturer Error Description
+ObjectType=0x08
+
+[2200sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x04
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[2200sub1]
+ParameterName=CANOpen Error Description
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2200sub2]
+ParameterName=Storage Error Description
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2200sub3]
+ParameterName=HW Init Error Description
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+
+[2200sub4]
+ParameterName=Application Error Description
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+LowLimit=0x00000000
+HighLimit=0xFFFFFFFF
+

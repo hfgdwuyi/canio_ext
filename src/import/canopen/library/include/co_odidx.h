@@ -1,0 +1,153 @@
+/*
+ * co_odidx - declarations for public od index
+ *
+ * Copyright (c) 2001-2017 port GmbH Halle/Saale
+ *------------------------------------------------------------------
+ */
+
+/**
+*  \file co_odidx.h
+*++ Defines of object indices in the object dictionary
+*-- Definitionen von Objektindizes im Objektverzeichnis
+*  \author port GmbH Halle (Saale)
+*
+*++ The file contains definitions of structures and complex data types
+*++ for the public od index.
+*-- Diese Datei enthält Definitionen von Strukturen und Datentypen
+*-- für Objekte aus dem Objektverzeichnis.
+*/
+
+#ifndef __CO_ODIDX_
+# define __CO_ODIDX_
+
+/* od index defines */
+#define CO_DATATYPE_INDEX_BOOLEAN         0x0001u
+#define CO_DATATYPE_INDEX_INTEGER8        0x0002u
+#define CO_DATATYPE_INDEX_INTEGER16       0x0003u
+#define CO_DATATYPE_INDEX_INTEGER32       0x0004u
+#define CO_DATATYPE_INDEX_UNSIGNED8       0x0005u
+#define CO_DATATYPE_INDEX_UNSIGNED16      0x0006u
+#define CO_DATATYPE_INDEX_UNSIGNED32      0x0007u
+#define CO_DATATYPE_INDEX_REAL32          0x0008u
+#define CO_DATATYPE_INDEX_VISIBLE_STRING  0x0009u
+#define CO_DATATYPE_INDEX_OCTET_STRING    0x000au
+#define CO_DATATYPE_INDEX_UNICODE_STRING  0x000bu
+#define CO_DATATYPE_INDEX_TIME_OF_DAY     0x000cu
+#define CO_DATATYPE_INDEX_DOMAIN          0x000fu
+#define CO_DATATYPE_INDEX_INTEGER24       0x0010u
+#define CO_DATATYPE_INDEX_INTEGER64       0x0015u
+#define CO_DATATYPE_INDEX_UNSIGNED24      0x0016u
+#define CO_DATATYPE_INDEX_UNSIGNED40      0x0018u
+#define CO_DATATYPE_INDEX_UNSIGNED48      0x0019u
+#define CO_DATATYPE_INDEX_UNSIGNED56      0x001au
+#define CO_DATATYPE_INDEX_UNSIGNED64      0x001bu
+#define CO_DATATYPE_INDEX_PDO_COMMUNICATION_PARAMETER       0x0020u
+#define CO_DATATYPE_INDEX_PDO_MAPPING     0x0021u
+#define CO_DATATYPE_INDEX_SDO_PARAMETER   0x0022u
+#define CO_DATATYPE_INDEX_IDENTITY        0x0023u
+
+#define DEVICE_TYPE_INDEX	0x1000u
+#define ERROR_REGISTER_INDEX	0x1001u
+#define MANU_STATUS_INDEX	0x1002u
+#define ERROR_FIELD_INDEX	0x1003u
+
+#define SYNC_COB_ID_INDEX               0x1005u
+#define COMM_CYCLE_INDEX                0x1006u
+#define SYNC_WINDOW_LENGTH_INDEX        0x1007u
+
+#define MANUFACTURER_DEVICE_NAME_INDEX       0x1008u
+#define MANUFACTURER_HARDWARE_VERSION_INDEX  0x1009u
+#define MANUFACTURER_SOFTWARE_VERSION_INDEX  0x100Au
+
+#define GUARD_TIME_INDEX        0x100Cu
+#define LIFE_TIME_FAC_INDEX     0x100Du
+
+#define STORE_PARA_INDEX	0x1010u
+#define RESTORE_DEF_PARA_INDEX	0x1011u
+#define TIME_COB_ID_INDEX       0x1012u
+
+#define EMCY_COB_ID_INDEX	0x1014u
+#define EMCY_INHIBIT_INDEX	0x1015u
+#define HEARTBEAT_CON_INDEX	0x1016u
+#define HEARTBEAT_PROD_INDEX	0x1017u
+#define IDENTITY_INDEX		0x1018u
+#define SYNC_COUNTER_INDEX	0x1019u
+
+#define VERIFY_CONFIG_INDEX	0x1020u
+
+#define OS_COMMAND_INDEX	0x1023u
+#define OS_COMMAND_MODE_INDEX	0x1024u
+#define OS_DEBUG_INTERFACE_INDEX 0x1025u
+#define OS_PROMPT		0x1026u
+
+#define EMCY_CONSUMER_INDEX	0x1028u
+#define ERROR_BEHAVIOR_INDEX	0x1029u
+
+#define SSDO_PARA_BASE_INDEX    0x1200u
+#define SSDO_PARA_LAST_INDEX    0x127Fu
+#define CSDO_PARA_BASE_INDEX    0x1280u
+#define CSDO_PARA_LAST_INDEX    0x12FFu
+
+#define SRDO_GFC		0x1300u
+#define SRDO_PARA_BASE_INDEX	0x1301u
+#define SRDO_PARA_LAST_INDEX	0x1340u
+#define SRDO_MAP_BASE_INDEX	0x1381u
+#define SRDO_MAP_LAST_INDEX	0x13C0u
+#define SRDO_CONFIG_VALID	0x13FEu
+#define SRDO_CONFIG_CHECKSUM	0x13FFu
+
+#define RPDO_PARA_BASE_INDEX    0x1400u
+#define RPDO_PARA_LAST_INDEX    0x15FFu
+#define RPDO_MAP_BASE_INDEX     0x1600u
+#define RPDO_MAP_LAST_INDEX     0x17FFu
+
+#define TPDO_PARA_BASE_INDEX    0x1800u
+#define TPDO_PARA_LAST_INDEX    0x19FFu
+#define TPDO_MAP_BASE_INDEX     0x1A00u
+#define TPDO_MAP_LAST_INDEX     0x1BFFu
+
+#define SRD_REQUEST_SDO_INDEX	0x1F00u
+#define SRD_RELEASE_SDO_INDEX	0x1F01u
+#define SRD_COBID_TAB_INDEX	0x1F02u
+#define SRD_CONNPART1_INDEX	0x1F03u
+#define SRD_CONNPART2_INDEX	0x1F04u
+#define SRD_CONNPART3_INDEX	0x1F05u
+#define SRD_CONNPART4_INDEX	0x1F06u
+#define SRD_CONN_REQ_INDEX	0x1F10u
+
+#define CONSIZE_DCF_INDEX		0x1F22u
+
+#define EXPECTED_CONFIG_DATE_INDEX	0x1F26u
+#define EXPECTED_CONFIG_TIME_INDEX	0x1F27u
+
+#define DOWNLOAD_PROGRAM_DATA		0x1F50u
+#define DOWNLOAD_PROGRAM_CONTROL	0x1F51u
+
+#define REDCY_INDEX			0x1F60u
+
+#define NMT_MASTER_INDEX		0x1F80u
+#define NMT_SLAVE_ASSIGNMENT_INDEX	0x1F81u
+#define NMT_REQUEST_INDEX		0x1F82u
+#define NMT_REQUEST_NODE_GUARD_INDEX	0x1F83u
+#define NMT_DEVICE_IDENT_INDEX		0x1F84u
+#define NMT_VENDOR_IDENT_INDEX		0x1F85u
+#define NMT_PRODUCT_CODE_INDEX		0x1F86u
+#define NMT_REVISION_NUMBER_INDEX	0x1F87u
+#define NMT_SERIAL_NUMBER_INDEX		0x1F88u
+#define NMT_BOOT_TIME_INDEX		0x1F89u
+
+#define FLYMA_TIMEPAR_INDEX		0x1F90u
+#define FLYMA_DEVPAR_INDEX		0x1F91u
+
+#define MPDO_SCANNER_LIST_INDEX		0x1FA0u
+#define MPDO_SCANNER_LIST_LAST		0x1FCFu
+#define MPDO_DISP_LIST_INDEX		0x1FD0u
+#define MPDO_DISP_LIST_LAST		0x1FFFu
+
+
+
+
+#endif /* __CO_ODIDX_ */
+
+/* end of source */
+

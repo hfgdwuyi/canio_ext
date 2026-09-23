@@ -1,0 +1,3896 @@
+
+application Documentation
+- 05-29-2026 - 10:24AM -
+
+
+CANopen device using port's CANopen library
+
+- - - - - - - - Object Description - - - - - - - - - -
+-------------------------------------------------------
+
+============ Line 0 ============
+
+Summary of line 0:
+---------------------------------------------------------------------------
+1000	Device Type
+1001	Error Register
+1002	Manufacturer Status Register
+1003	Pre-defined Error Field
+1005	COB-ID SYNC
+1006	Communication Cycle Period
+1008	Manufacturer Device Name
+1009	Manufacturer Hardware Version
+100A	Manufacturer Software Version
+1010	Store Parameter Field
+1011	Restore Default Parameters
+1014	COB-ID EMCY
+1015	Inhibit Time Emergency
+1017	Producer Heartbeat Time
+1018	Identity Object
+1200	Server SDO Parameter 1
+1400	Receive PDO Communication Parameter 1
+1401	Receive PDO Communication Parameter 2
+1402	Receive PDO Communication Parameter 3
+1600	Receive PDO Mapping Parameter 1
+1601	Receive PDO Mapping Parameter 2
+1602	Receive PDO Mapping Parameter 3
+1800	Transmit PDO Communication Parameter 1
+1801	Transmit PDO Communication Parameter 2
+1802	Transmit PDO Communication Parameter 3
+1803	Transmit PDO Communication Parameter 4
+1804	Transmit PDO Communication Parameter 5
+1805	Transmit PDO Communication Parameter 6
+1806	Transmit PDO Communication Parameter 7
+1807	Transmit PDO Communication Parameter 8
+1808	Transmit PDO Communication Parameter 9
+1A00	Transmit PDO Mapping Parameter 1
+1A01	Transmit PDO Mapping Parameter 2
+1A02	Transmit PDO Mapping Parameter 3
+1A03	Transmit PDO Mapping Parameter 4
+1A04	Transmit PDO Mapping Parameter 5
+1A05	Transmit PDO Mapping Parameter 6
+1A06	Transmit PDO Mapping Parameter 7
+1A07	Transmit PDO Mapping Parameter 8
+1A08	Transmit PDO Mapping Parameter 9
+1F51	Program Control
+2000	Debug Array
+2008	Manufacturer Device Name Setup
+2009	Manufacturer HW Version Setup
+200A	Manufacturer SW Version Setup
+2018	Identity Object Write
+2019	Component Serial Number
+201A	PCBA Part Number
+2100	CAN Configuration
+2101	Node IDs Table
+2102	Baudrates Table
+2200	Manufacturer Error Description
+5001	DI Write Value
+5002	DI Write Mask
+5003	DI Filter Time
+5004	AI Filter Time
+5006	DO Default State
+5101	Temperature Sensor configuration
+5102	Temperature Sensor limits
+5200	ISM330DLC registers
+5300	ISM330DLC quaternions
+5301	ISM330DLC rotations
+5302	ISM330DLC calibrate
+5303	ISM330DLC orientation configuration
+5304	ISM330DLC manual axis configuration
+5401	PWM Control
+5402	PWM Carrier Frequency
+5403	PWM Duty Cycle
+5404	PWM Error Mode
+5405	PWM Error Value
+6000	DI Read 8-bit
+6002	DI Polarity 8-bit
+6003	DI Filter Enable 8-bit 
+6005	DI interrupt enable
+6006	DI Interrupt Mask Any Change
+6007	DI Interrupt Mask Rising Edge
+6008	DI Interrupt Mask Falling Edge
+6200	DO Write 8-bit
+6202	DO Polarity 8-bit
+6206	DO Error mode 8-bit
+6207	DO Error Value 8-bit
+6208	DO Filter Mask 8-bit
+6401	Analog Input 16-bit
+6411	Analog Output 16-bit
+6423	Analog Input IRQ Enable
+6424	Analog Input IRQ Upper Limit
+6425	Analog Input IRQ Lower Limit
+6426	Analog Input IRQ Delta
+6427	Analog Input IRQ Delta Negative
+6428	Analog Input IRQ Delta Positive
+6431	Analog Input Offset Integer
+6432	Analog Input Prescale Integer
+6443	Analog Output Error Mode 8-bit
+6444	Analog Output Error Value
+6446	Analog Output Offset
+6447	Analog Output Scalling
+
+
+Communication Segment
+
+
+Variable - 1000 - Device Type:
+---------------------------------------------------------------------------
+The device type specifies the kind of device.
+
+The lower 16 bit contain the device profile number and
+
+the upper 16 bit an additional information.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1001 - Error Register:
+---------------------------------------------------------------------------
+The error register is a field of 8 bits, each for a certain error type. If an error occurs the bit has to be set.
+
+
+
+    Bit Meaning
+
+    0  generic error
+
+    1  current
+
+    2  voltage
+
+    3  temperature
+
+    4  communication error (overrun, error state)
+
+    5  device profile specific
+
+    6  reserved
+
+    7  manufacturer specific
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+
+
+Variable - 1002 - Manufacturer Status Register:
+---------------------------------------------------------------------------
+This object is a common status register for 
+    manufacturer specific purposes.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Array - 1003 - Pre-defined Error Field:
+---------------------------------------------------------------------------
+This object holds errors that have occurred
+		on the device and have been signalled via Emergency Object.
+		It is an error history.
+		Writing to sub index 0 deletes the entire error history.
+1003:000 Number of Errors
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFE       	u8	RW	0
+
+1003:001 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:002 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:003 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:004 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:005 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:006 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:007 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:008 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:009 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1003:010 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1005 - COB-ID SYNC:
+---------------------------------------------------------------------------
+COB-ID of the Synchronization object.
+    The device generates a SYNC message if bit 30 is set.
+    The meaning of other bits is equal to the other communication objects.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x80       0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 1006 - Communication Cycle Period:
+---------------------------------------------------------------------------
+This entry defines the communication cycle period in us. It is 0, if not used.
+Value      Min         Max         Unit	Type	Access	Mapping
+0xF4240    0x0        0xFFFFFFFF us	u32	RW	0
+
+
+
+Variable - 1008 - Manufacturer Device Name:
+---------------------------------------------------------------------------
+Contains the device name.
+Value      Min         Max         Unit	Type	Access	Mapping
+STM32H750B-DK                    	vstr	CONST	0
+
+
+
+Variable - 1009 - Manufacturer Hardware Version:
+---------------------------------------------------------------------------
+Contains the device hardware version.
+Value      Min         Max         Unit	Type	Access	Mapping
+E1                               	vstr	CONST	0
+
+
+
+Variable - 100A - Manufacturer Software Version:
+---------------------------------------------------------------------------
+Contains the device software version.
+Value      Min         Max         Unit	Type	Access	Mapping
+0.0.1 Application                	vstr	CONST	0
+
+
+
+Array - 1010 - Store Parameter Field:
+---------------------------------------------------------------------------
+This entry supports saving of parameters in non volatile memory.
+    With a read access the device provides information about
+    its saving capabilities. Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For saving the signature "save" (0x65766173) must be written.
+    The CANopen Library by port contains an extensions for clear ("kill").
+1010:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0x7F       	u8	CONST	0
+
+1010:001 Save all Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:002 Save Communication Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:003 Save Application Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:004 Save Asset Data
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 1011 - Restore Default Parameters:
+---------------------------------------------------------------------------
+This entry supports restoring of default para- meters.
+    With a read access the device provides information about
+    its capabilities to restore these values.
+    Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For restoring the signature "load" (0x64616f6c) must be written.
+1011:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0x7F       	u8	CONST	0
+
+1011:001 Restore all Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:002 Restore Communication Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:003 Restore Application Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:004 Restore Asset Data Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 1014 - COB-ID EMCY:
+---------------------------------------------------------------------------
+COB-ID used for emergency message (Emergency Producer).
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x80       0xBFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1015 - Inhibit Time Emergency:
+---------------------------------------------------------------------------
+Inhibit Time used for emergency message (Emergency Producer). The time has to be a multiple of 100 us.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     100 us	u16	RW	0
+
+
+
+Variable - 1017 - Producer Heartbeat Time:
+---------------------------------------------------------------------------
+The producer heartbeat time defines the cycle time of the heartbeat.
+
+If the time is 0 it is not used. The time has to be a multiple of 1 ms.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7D0      0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1018 - Identity Object:
+---------------------------------------------------------------------------
+This object contains general information about the
+
+    device.
+
+    Sub-Index 1 contains a unique value allocated each manufacturer.
+
+    Sub-Index 2 identifies the manufacturer specific product code (device version).
+
+    Sub-Index 3 contains the revision number.
+
+    Bit 31-16 is the major revision number and Bit 15-0 the minor revision number.
+
+    Sub-Index 4 identifies a manufacturer specific serial number.
+1018:000 number of entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x1        0x4        	u8	RO	0
+
+1018:001 Vendor Id
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x500053   0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:002 Product Code
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:003 Revision number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:004 Serial number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Record - 1200 - Server SDO Parameter 1:
+---------------------------------------------------------------------------
+The object contains the parameters for the SDOs for which
+
+the device is the server.
+1200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x2        0x2        	u8	RO	0
+
+1200:001 COB-ID Client -> Server
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x600      0x600      0xBFFFFFFF 	u32	RO	0
+
+1200:002 COB-ID Server -> Client
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x580      0x580      0xBFFFFFFF 	u32	RO	0
+
+
+
+Record - 1400 - Receive PDO Communication Parameter 1:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to receive.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1400:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x2        0x5        	u8	CONST	0
+
+1400:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200      0x80       0xFFFFFFFF 	u32	RW	0
+
+1400:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+
+
+Record - 1401 - Receive PDO Communication Parameter 2:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to receive.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1401:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x2        0x5        	u8	CONST	0
+
+1401:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x300      0x80       0xFFFFFFFF 	u32	RW	0
+
+1401:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+
+
+Record - 1402 - Receive PDO Communication Parameter 3:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to receive.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1402:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x2        0x5        	u8	CONST	0
+
+1402:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x400      0x80       0xFFFFFFFF 	u32	RW	0
+
+1402:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+
+
+Record - 1600 - Receive PDO Mapping Parameter 1:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+    lengths of the mapped sub-indices.
+
+    Their structure is as follows:
+    index (16bit)   sub-index (8bit)   length (8bit)
+1600:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+1600:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x62000108 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1600:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x62000208 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1600:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x62000308 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1600:004 Mapping Entry 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x62000408 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1601 - Receive PDO Mapping Parameter 2:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+    lengths of the mapped sub-indices.
+
+    Their structure is as follows:
+    index (16bit)   sub-index (8bit)   length (8bit)
+1601:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+1601:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x54030108 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1601:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x54030208 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1602 - Receive PDO Mapping Parameter 3:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+    lengths of the mapped sub-indices.
+
+    Their structure is as follows:
+    index (16bit)   sub-index (8bit)   length (8bit)
+1602:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+1602:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64110110 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1800 - Transmit PDO Communication Parameter 1:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1800:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1800:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x180      0x80       0xFFFFFFFF 	u32	RW	0
+
+1800:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1800:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1800:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1800:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1801 - Transmit PDO Communication Parameter 2:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1801:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1801:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x280      0x80       0xFFFFFFFF 	u32	RW	0
+
+1801:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1801:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     100 us	u16	RW	0
+
+1801:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1801:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1802 - Transmit PDO Communication Parameter 3:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1802:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1802:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x380      0x80       0xFFFFFFFF 	u32	RW	0
+
+1802:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1802:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1802:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1802:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1803 - Transmit PDO Communication Parameter 4:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID.
+    If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1803:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1803:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x480      0x80       0xFFFFFFFF 	u32	RW	0
+
+1803:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1803:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1803:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1803:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1804 - Transmit PDO Communication Parameter 5:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID.
+    If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1804:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1804:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x181      0x80       0xFFFFFFFF 	u32	RW	0
+
+1804:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1804:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1804:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1804:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1805 - Transmit PDO Communication Parameter 6:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID.
+    If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1805:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1805:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x281      0x80       0xFFFFFFFF 	u32	RW	0
+
+1805:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1805:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1805:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1805:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1806 - Transmit PDO Communication Parameter 7:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID.
+    If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1806:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1806:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x381      0x80       0xFFFFFFFF 	u32	RW	0
+
+1806:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1806:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     0	u16	RW	0
+
+1806:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1806:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1807 - Transmit PDO Communication Parameter 8:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID.
+    If bit 31 is set the PDO is disabled.
+    The  transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1807:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1807:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x481      0x80       0xFFFFFFFF 	u32	RW	0
+
+1807:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1807:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     100 us	u16	RW	0
+
+1807:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1807:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1808 - Transmit PDO Communication Parameter 9:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+    the device is able to transmit.
+    Sub-index 0 contains the number of PDO-parameters implemented.
+    Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+    The transmission mode is defined by sub-index 2.
+    An inhibit time can be defined on sub-index 3 in 100 us.
+    At the 5th sub-index can be defined a event time for asynchron pdos.
+1808:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x2        0x6        	u8	CONST	0
+
+1808:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80000182 0x80       0xFFFFFFFF 	u32	RW	0
+
+1808:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x0        0xFF       	u8	RW	0
+
+1808:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     100 us	u16	RW	0
+
+1808:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+1808:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1A00 - Transmit PDO Mapping Parameter 1:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A00:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+1A00:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x60000108 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A00:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x60000208 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A00:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x60000308 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A00:004 Mapping Entry 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x60000408 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A00:005 Mapping Entry 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x60000508 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A01 - Transmit PDO Mapping Parameter 2:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A01:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+1A01:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010710 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A01:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A01:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A02 - Transmit PDO Mapping Parameter 3:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A02:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3        0x0        0xFF       	u8	CONST	0
+
+1A02:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010210 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A02:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010310 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A02:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010410 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A03 - Transmit PDO Mapping Parameter 4:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A03:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+1A03:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010710 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A04 - Transmit PDO Mapping Parameter 5:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A04:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3        0x0        0xFF       	u8	CONST	0
+
+1A04:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010810 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A04:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010910 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A04:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010A10 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A05 - Transmit PDO Mapping Parameter 6:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A05:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3        0x0        0xFF       	u8	CONST	0
+
+1A05:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010B10 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A05:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010C10 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A05:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x64010D10 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A06 - Transmit PDO Mapping Parameter 7:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A06:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+1A06:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x53010120 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A06:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x53010220 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A07 - Transmit PDO Mapping Parameter 8:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A07:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+1A07:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x53010120 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Record - 1A08 - Transmit PDO Mapping Parameter 9:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+    The type of the PDO mapping parameter is at index 21h.
+    The subindex 0h contains the number of valid entires within the mapping record.
+    This number of entries is also the number of the application variables
+    which shall be transmitted with the corresponding PDO.
+    The subindicex from 1h to number of entries contain the information
+    about the mapped application variables.
+    These entries describe the PDO contents by their index, subindex and length.
+    Allthree values are hexa-decimal coded.
+    The length entry contains the length of the object in bits (1..40h).
+    This parameter can be used to verify the overall mapping length. It is mandatory.
+1A08:000 Number of mapped objects
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+1A08:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x53010120 0x0        0xFFFFFFFF 	u32	CONST	0
+
+1A08:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x53010220 0x0        0xFFFFFFFF 	u32	CONST	0
+
+
+
+Array - 1F51 - Program Control:
+---------------------------------------------------------------------------
+This array controls the programs residing at index 0x1F50. The sub-Index 0 contains the number of program control entries. All further sub-indices control the programs. They can have the following values:
+
+for writing:
+0 - stop program
+1 - start program
+2-  reset program
+3-  clear program
+
+for reading:
+0 - program stopped
+1 - program running
+2 - program stopped
+3 - no program available
+
+0x80..0xFF manufacturer-specific
+1F51:000 Highest Sub-index Supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x1        0xFF       	u8	CONST	0
+
+1F51:001 Program Number 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+Manufacturer Segment
+
+
+Array - 2000 - Debug Array:
+---------------------------------------------------------------------------
+
+2000:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xB        0x0        0xFF       	u8	CONST	0
+
+2000:001 Debug Array 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:002 Debug Array 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:003 Debug Array 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:004 Debug Array 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:005 Debug Array 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:006 Debug Array 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:007 Debug Array 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:008 Debug Array 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:009 Debug Array 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:010 Debug Array 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2000:011 Debug Array 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 2008 - Manufacturer Device Name Setup:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+CANIO_EXT                        	vstr	RW	0
+
+
+
+Variable - 2009 - Manufacturer HW Version Setup:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+E1                               	vstr	RW	0
+
+
+
+Variable - 200A - Manufacturer SW Version Setup:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+1.0.0 Application                 	vstr	RW	0
+
+
+
+Record - 2018 - Identity Object Write:
+---------------------------------------------------------------------------
+
+2018:000 numOfEntries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x1        0x4        	u8	RO	0
+
+2018:001 vendorId
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x500053   0x0        0xFFFFFFFF 	u32	RO	0
+
+2018:002 productCode
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xB5F946   0x0        0xFFFFFFFF 	u32	RW	0
+
+2018:003 revisionNumber
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2018:004 serialNumber
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7A12E    0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Record - 2019 - Component Serial Number:
+---------------------------------------------------------------------------
+
+2019:000 numOfEntries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x1        0x1         	u8	RO	0
+
+2019:001 serialNumberComponent
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xC35E     0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 201A - PCBA Part Number:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xB5F942   0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 2100 - CAN Configuration:
+---------------------------------------------------------------------------
+CAN configuration code read from dedicated pins
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+
+
+Array - 2101 - Node IDs Table:
+---------------------------------------------------------------------------
+
+2101:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2101:001 Node ID 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0x7F       	u8	RW	0
+
+2101:002 Node ID 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0x7F       	u8	RW	0
+
+2101:003 Node ID 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0x7F       	u8	RW	0
+
+2101:004 Node ID 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0x7F       	u8	RW	0
+
+
+
+Array - 2102 - Baudrates Table:
+---------------------------------------------------------------------------
+
+2102:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2102:001 Baudrate 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0x3E8      	u16	RW	0
+
+2102:002 Baudrate 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0x3E8      	u16	RW	0
+
+2102:003 Baudrate 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0x3E8      	u16	RW	0
+
+2102:004 Baudrate 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0x3E8      	u16	RW	0
+
+
+
+Array - 2200 - Manufacturer Error Description:
+---------------------------------------------------------------------------
+Subindex 1: CANOpen errors
+
+bit 0 - Pasisive Error
+
+bit 1 - Bus Off
+
+bit 2 - Overflow
+
+bit 3 - TX Overflow
+
+bit 4 - RX Overflow
+2200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2200:001 CANOpen Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:002 Storage Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:003 HW Init Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:004 Application Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Array - 5001 - DI Write Value:
+---------------------------------------------------------------------------
+
+5001:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+5001:001 DI Write Value Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5001:002 DI Write Value Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5001:003 DI Write Value Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5001:004 DI Write Value Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5001:005 DI Write Value Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5002 - DI Write Mask:
+---------------------------------------------------------------------------
+
+5002:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+5002:001 DI Write Mask 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5002:002 DI Write Mask 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5002:003 DI Write Mask 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5002:004 DI Write Mask 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5002:005 DI Write Mask 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5003 - DI Filter Time:
+---------------------------------------------------------------------------
+
+5003:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x28       0x0        0xFF       	u8	CONST	0
+
+5003:001 DI Filter Time 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:002 DI Filter Time 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:003 DI Filter Time 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:004 DI Filter Time 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:005 DI Filter Time 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:006 DI Filter Time 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:007 DI Filter Time 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:008 DI Filter Time 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:009 DI Filter Time 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:010 DI Filter Time 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:011 DI Filter Time 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:012 DI Filter Time 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:013 DI Filter Time 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:014 DI Filter Time 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:015 DI Filter Time 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:016 DI Filter Time 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:017 DI Filter Time 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:018 DI Filter Time 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:019 DI Filter Time 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:020 DI Filter Time 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:021 DI Filter Time 20
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:022 DI Filter Time 21
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:023 DI Filter Time 22
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:024 DI Filter Time 23
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:025 DI Filter Time 24
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:026 DI Filter Time 25
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:027 DI Filter Time 26
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:028 DI Filter Time 27
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:029 DI Filter Time 28
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:030 DI Filter Time 29
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:031 DI Filter Time 30
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:032 DI Filter Time 31
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:033 DI Filter Time 32
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:034 DI Filter Time 33
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:035 DI Filter Time 34
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:036 DI Filter Time 35
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:037 DI Filter Time 36
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:038 DI Filter Time 37
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:039 DI Filter Time 38
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+5003:040 DI Filter Time 39
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5004 - AI Filter Time:
+---------------------------------------------------------------------------
+
+5004:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+5004:001 AI Filter Time 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:002 AI Filter Time 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:003 AI Filter Time 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:004 AI Filter Time 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:005 AI Filter Time 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:006 AI Filter Time 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:007 AI Filter Time 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:008 AI Filter Time 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:009 AI Filter Time 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:010 AI Filter Time 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:011 AI Filter Time 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:012 AI Filter Time 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:013 AI Filter Time 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:014 AI Filter Time 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:015 AI Filter Time 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:016 AI Filter Time 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:017 AI Filter Time 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:018 AI Filter Time 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:019 AI Filter Time 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+5004:020 AI Filter Time 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5006 - DO Default State:
+---------------------------------------------------------------------------
+
+5006:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+5006:001 Default State Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5006:002 Default State Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5006:003 Default State Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5006:004 Default State Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Variable - 5101 - Temperature Sensor configuration:
+---------------------------------------------------------------------------
+Read / write access to the on-board temperature register TMP75
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5102 - Temperature Sensor limits:
+---------------------------------------------------------------------------
+In comparator mode (TM = 0), the ALERT pin of the TMP175 
+
+and TMP75 becomes active when the temperature equals or 
+
+exceeds the value in THIGH and generates a consecutive number
+
+of faults according to fault bits F1 and F0. The ALERT pin remains 
+
+active until the temperature falls below the indicated TLOW value 
+
+for the same number of faults.
+
+In interrupt mode (TM = 1), the ALERT pin becomes active when 
+
+the temperature equals or exceeds THIGH for a consecutive 
+
+number of fault conditions. The ALERT pin remains active 
+
+until a read operation of any register occurs, or the device 
+
+successfully responds to the SMBus Alert response address. 
+
+The ALERT pin is also cleared if the device is placed in shutdown 
+
+mode. When the ALERT pin is cleared, it only become active 
+
+again by the temperature falling below TLOW. When the 
+
+temperature falls below TLOW, the ALERT pin becomes active 
+
+and remains active until cleared by a read operation of any 
+
+register or a successful response to the SMBus Alert response 
+
+address. When the ALERT pin is cleared, the above cycle 
+
+repeats, with the ALERT pin becoming active when the
+
+temperature equals or exceeds THIGH. The ALERT pin can also
+
+be cleared by resetting the device with the general call reset 
+
+command. This action also clears the state of the internal 
+
+registers in the device by returning the device to comparator
+
+mode (TM = 0).
+5102:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5102:001 Limit high
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x50       0x8000     0x7FFF     	i16	RW	0
+
+5102:002 Limit low
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4B       0x8000     0x7FFF     	i16	RW	0
+
+
+
+Array - 5200 - ISM330DLC registers:
+---------------------------------------------------------------------------
+
+5200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5200:001 SPI Set/Get ISM330DLC Register
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x7F       	u8	RW	0
+
+5200:002 SPI Read/Write ISM330DLC Register Data
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5300 - ISM330DLC quaternions:
+---------------------------------------------------------------------------
+
+5300:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+5300:001 q0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	0
+
+5300:002 q1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	0
+
+5300:003 q2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	0
+
+5300:004 q3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	0
+
+
+
+Array - 5301 - ISM330DLC rotations:
+---------------------------------------------------------------------------
+
+5301:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5301:001 Roll
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	1
+
+5301:002 Pitch
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0xFF7FFFFF 0x7F7FFFFF 	r32	RO	1
+
+
+
+Array - 5302 - ISM330DLC calibrate:
+---------------------------------------------------------------------------
+
+5302:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5302:001 Calibrate angles
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+5302:002 Calibrate orientation
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 5303 - ISM330DLC orientation configuration:
+---------------------------------------------------------------------------
+
+5303:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3        0x0        0xFF       	u8	CONST	0
+
+5303:001 Swap roll pitch
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	0
+
+5303:002 Mirror roll
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	0
+
+5303:003 Mirror pitch
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	0
+
+
+
+Array - 5304 - ISM330DLC manual axis configuration:
+---------------------------------------------------------------------------
+
+5304:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7        0x0        0xFF       	u8	CONST	0
+
+5304:001 Enable axis configuration
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+5304:002 X axis
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+5304:003 Y axis
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	RO	0
+
+5304:004 Z axis
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	RO	0
+
+5304:005 X sign
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+5304:006 Y sign
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+5304:007 Z sign
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+
+
+Array - 5401 - PWM Control:
+---------------------------------------------------------------------------
+This object is implemented in order to add digital control to the PWM 
+
+output channels. If set the PWM channel is enabled. Resetting
+
+ the corresponding bit of the object disables the PWM but does not change
+
+ the duty cycle written to object 0x5403 The digital control may be used
+
+ to switch a pre-configured PWM channel on or off.
+5401:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5401:001 PWM enable PUMP
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0x1        	bool	RW	0
+
+5401:002 PWM enable FAN
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0x1        	bool	RW	0
+
+
+
+Variable - 5402 - PWM Carrier Frequency:
+---------------------------------------------------------------------------
+PWM frequency in Hz
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5DC0     0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 5403 - PWM Duty Cycle:
+---------------------------------------------------------------------------
+PWM duty cycle in percent
+5403:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5403:001 PWM Duty Cycle PUMP
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x64       	u8	RW	1
+
+5403:002 PWM Duty Cycle FAN
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x64       	u8	RW	1
+
+
+
+Array - 5404 - PWM Error Mode:
+---------------------------------------------------------------------------
+This object indicates whether an output is forced to a predefined value 
+
+given in object 0x5405 in case of a device error. 
+
+ 1 = output will be forced to the value selected in object 0x5405
+
+ 0 = output will be unchanged even in case of an error condition
+5404:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5404:001 PWM Error Mode PUMP
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	0
+
+5404:002 PWM Error Mode FAN
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	0
+
+
+
+Array - 5405 - PWM Error Value:
+---------------------------------------------------------------------------
+This object selects the lPWM duty cycle value which are are forced to in case of a device error mode
+5405:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x0        0xFF       	u8	CONST	0
+
+5405:001 PWM FaultState PUMP
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x64       	u8	RW	0
+
+5405:002 PWM FaultState FAN
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x64       	u8	RW	0
+
+
+Device Profile Segment
+
+
+Array - 6000 - DI Read 8-bit:
+---------------------------------------------------------------------------
+Digital inputs State
+
+Subindex 1:
+
+0	Grip Sensor 1 State					CAP-SENS1
+
+1	Grip Sensor 2 State					CAP-SENS2
+
+2	Tactile Sensor C-arm Cable Break 	TACT-CARM-CBRK-C
+
+3	Tactile Sensor FD1 Cable Break		TACT-FD1-CBRK-C
+
+4	Tactile Sensor FD2 Cable Break 		TACT-FD2-CBRK-C
+
+5	Tactile Sensor MB1 Cable Break 		TACT-MB1-CBRK-C
+
+6	Tactile Sensor MB2 Cable Break 		TACT-MB2-CBRK-C
+
+7	Tactile Sensor C-arm State			TACT-CARM-CONT-C
+
+
+
+Subindex 2:
+
+0	Tactile Sensor FD1 State 				TACT-FD1-CONT-C
+
+1	Tactile Sensor FD2 State 				TACT-FD2_CONT-C
+
+2	Tactile Sensor MB1 State 	 			TACT-MB1-CONT-C
+
+3	Tactile Sensor MB2 State 				TACT-MB2-CONT-C 
+
+4	Emergency Stop Input 1				EMCY-IN1-C
+
+5	Emergency Stop Input 2				EMCY-IN2-C
+
+6	Power Good 24 V Safety Area 		P24V0-SI-PWRGD
+
+7	Tactile Sensor OR Cable Break 		TACT-CBRK-OR
+
+
+
+Subindex 3:
+
+0	CAN Power Supply Fault				CAN-PWR-FLT 
+
+1	Collimator Power Supply Fault		COLLI-PWR-FLT
+
+2	Grid Power Supply Fault				GRID-PWR-FLT
+
+3	Laser FD Power Supply Fault 			LASER-FD-FLT
+
+4	Laser MB Power Supply Fault			LASER-MB-FLT
+
+5	Force Sensor Power Supply Fault 	FORCE-PWR-FLT
+
+6	Grip Sensor Power Supply Fault 		GRIP-PWR-FLT
+
+7	User Interface Power Supply Fault 	UI_PWR_FLT
+
+Subindex 4:
+
+0	I2C Temperature Sensor Alert 		TEMP-ALERT 
+
+1	User Interface Voltage Detection (PI15/PF15)	UI-P24V-DET
+
+2	Reserved
+
+3	Reserved
+
+4	Reserved
+
+5	Reserved
+
+6	Reserved
+
+7	Reserved
+
+Subindex 5:
+
+No mapped inputs in current BSP implementation
+6000:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6000:001 Read Input Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	1
+
+6000:002 Read Input Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	1
+
+6000:003 Read Input Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	1
+
+6000:004 Read Input Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	1
+
+6000:005 Read Input Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	1
+
+
+
+Array - 6002 - DI Polarity 8-bit:
+---------------------------------------------------------------------------
+
+6002:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6002:001 Polarity Input Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6002:002 Polarity Input Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6002:003 Polarity Input Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6002:004 Polarity Input Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6002:005 Polarity Input Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6003 - DI Filter Enable 8-bit :
+---------------------------------------------------------------------------
+
+6003:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6003:001 Filter Constant Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6003:002 Filter Constant Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6003:003 Filter Constant Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6003:004 Filter Constant Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6003:005 Filter Constant Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+
+
+Variable - 6005 - DI interrupt enable:
+---------------------------------------------------------------------------
+This object enables and disables globally the interrupt behavior 
+
+without changing the interrupt masks. In event-driven mode 
+
+the device transmits the input values depending on the 
+
+interrupt masks in objects 6006h, 6007h, and 6008 and the 
+
+PDO transmission type. 
+
+
+
+TRUE = global interrupt enabled 
+
+FALSE = global interrupt disabled
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0x1        	bool	RW	0
+
+
+
+Array - 6006 - DI Interrupt Mask Any Change:
+---------------------------------------------------------------------------
+This object determines, which input port lines shall activate 
+
+an interrupt by positive or/and negative edge detection.
+6006:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6006:001 Interrupt Mask Any Change Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6006:002 Interrupt Mask Any Change Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6006:003 Interrupt Mask Any Change Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6006:004 Interrupt Mask Any Change Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6006:005 Interrupt Mask Any Change Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6007 - DI Interrupt Mask Rising Edge:
+---------------------------------------------------------------------------
+This object determines, which input port lines shall activate 
+
+an interrupt by positive edge detection (logical 0 to 1). 
+
+Done for groups of 8 lines. The values shall be in an OR 
+
+connection to the values of 6006h object (Interrupt mask 
+
+any change 8-bit). If inputs are inverted by 6002h object 
+
+(polarity input 8-bit), the positive logical edge shall 
+
+correspond to negative physical edge. 
+
+
+
+1 = interrupt enabled 
+
+0 = interrupt disabled
+6007:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6007:001 Interrupt Mask Rising Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6007:002 Interrupt Mask Rising Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6007:003 Interrupt Mask Rising Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6007:004 Interrupt Mask Rising Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6007:005 Interrupt Mask Rising Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6008 - DI Interrupt Mask Falling Edge:
+---------------------------------------------------------------------------
+This object determines, which input port lines shall activate 
+
+an interrupt by negative edge detection (logical 1 to 0). 
+
+Done for groups of 8 lines. The values shall be in an OR 
+
+connection to the values of 6006h object (Interrupt mask any
+
+change 8-bit). If inputs are inverted by 6002h object 
+
+(polarity input 8-bit), the negative logical edge shall 
+
+correspond to positive physical edge. 
+
+
+
+1 = interrupt enabled 
+
+0 = interrupt disabled
+6008:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x5        0x0        0xFF       	u8	CONST	0
+
+6008:001 Interrupt Mask Falling Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6008:002 Interrupt Mask Falling Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6008:003 Interrupt Mask Falling Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6008:004 Interrupt Mask Falling Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6008:005 Interrupt Mask Falling Byte 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6200 - DO Write 8-bit:
+---------------------------------------------------------------------------
+Write digital output 
+
+Subindex 1
+
+0	User Interface Output L Pin5		UI-OUT-L(5)
+
+1	User Interface Output L Pin6		UI-OUT-L(6)
+
+2	User Interface Output L Pin7		UI-OUT-L(7)
+
+3	User Interface Output L Pin8		UI-OUT-L(8)
+
+4	User Interface Output L Pin9		UI-OUT-L(9)
+
+5	Reserved
+
+6	Reserved
+
+7	Reserved
+
+Subindex 2:
+
+0	User Interface Output R Pin5		UI-OUT-R(5)
+
+1	User Interface Output R Pin6		UI-OUT-R(6)
+
+2	User Interface Output R Pin7		UI-OUT-R(7)
+
+3	User Interface Output R Pin8		UI-OUT-R(8)
+
+4	User Interface Output R Pin9		UI-OUT-R(9)
+
+5	Reserved
+
+6	Reserved
+
+7	Reserved
+
+Subindex 3:
+
+0	E-break 1 Power Supply Enable		BRK_PWR_EN1
+
+1	E-break 2 Power Supply Enable		BRK_PWR_EN2
+
+2	E-break 3 Power Supply Enable		BRK_PWR_EN3
+
+3	E-break 4 Power Supply Enable		BRK_PWR_EN4
+
+4	User Interface LED Output Enable 	TLC5917_OE_N_L / TLC5917_OE_N_R
+
+5	User Interface Power Supply Enable 	UI-PWR-EN_L / UI-PWR-EN_R
+
+6	CAN Power Supply Enable			CAN-PWR-EN
+
+Subindex 4:
+
+No mapped outputs
+6200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+6200:001 Write output Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	1
+
+6200:002 Write output Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	1
+
+6200:003 Write output Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	1
+
+6200:004 Write output Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	1
+
+
+
+Array - 6202 - DO Polarity 8-bit:
+---------------------------------------------------------------------------
+
+6202:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+6202:001 Polarity Output Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6202:002 Polarity Output Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6202:003 Polarity Output Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0xFF       	u8	RW	0
+
+6202:004 Polarity Output Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6206 - DO Error mode 8-bit:
+---------------------------------------------------------------------------
+This object indicates, whether an output is set to a pre-defined
+
+error value (see 6207h in case of an internal device failure 
+
+or a 'Stop Remote Node' indication. 
+
+
+
+1 = output value shall take the pre-defined condition 
+
+specified in 6207h object 
+
+0 = output value shall be kept if an error occurs
+6206:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+6206:001 Error Mode Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6206:002 Error Mode Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6206:003 Error Mode Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6206:004 Error Mode Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6207 - DO Error Value 8-bit:
+---------------------------------------------------------------------------
+On condition that the corresponding Error mode is active, device failures 
+
+(see shall set the outputs to the value configured by this 
+
+object. 
+
+
+
+0 = output shall be set to 0 in case of fault, if 6206h object 
+
+is enabled 
+
+1 = output shall be set to 1 in case of fault, if 6206h object 
+
+is enabled
+6207:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+6207:001 Error Value Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6207:002 Error Value Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6207:003 Error Value Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+6207:004 Error Value Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6208 - DO Filter Mask 8-bit:
+---------------------------------------------------------------------------
+
+6208:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+6208:001 Filter Mask Byte 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6208:002 Filter Mask Byte 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6208:003 Filter Mask Byte 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+6208:004 Filter Mask Byte 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFF       0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6401 - Analog Input 16-bit:
+---------------------------------------------------------------------------
+Subindex 1:   Pump Current ADC[0]
+
+Subindex 2:   Force Sensor X ADC[1]
+
+Subindex 3:   Force Sensor Y ADC[2]
+
+Subindex 4:   Force Sensor Z ADC[3]
+
+Subindex 5 :  Temperature FD ADC[6]
+
+Subindex 6:   Temperature MB ADC[7]
+
+Subindex 7:   I2C Temperature Sensor
+
+Subindex 8:   SPI Gyroscope Sensor X
+
+Subindex 9:   SPI Gyroscope Sensor Y
+
+Subindex 10: SPI Gyroscope Sensor Z
+
+Subindex 11: SPI Accelerometer Sensor X
+
+Subindex 12: SPI Accelerometer Sensor Y
+
+Subindex 13: SPI Accelerometer Sensor Z
+
+Subindex 14: Pump current in mAmps
+
+Subindex 15: Temperature FD in 0.1 Celcius
+
+Subindex 16: Temperature MB in 0.1 Celcius
+
+Subindex 17: ADC2_INP12
+
+Subindex 18: ADC3_INP1
+6401:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6401:001 I2C Temperature Sensor
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:002 FORCE ADC(1)
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:003 FORCE ADC(2)
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:004 FORCE ADC(3)
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:005 TEMP FD ADC
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:006 TEMP MB ADC
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:007 I2C Temperature Sensor
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:008 SPI Gyroscope Sensor X
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:009 SPI Gyroscope Sensor Y
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:010 SPI Gyroscope Sensor Z
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:011 SPI Accelerometer Sensor X
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:012 SPI Accelerometer Sensor Y
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:013 SPI Accelerometer Sensor Z
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:014 PUMP Current mAmps
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:015 FD Temp Celsius
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:016 MB Temp Celsius
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:017 ADC2_INP12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:018 ADC3_INP1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:019 ADC3_INP1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+6401:020 ADC3_INP1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RO	1
+
+
+
+Array - 6411 - Analog Output 16-bit:
+---------------------------------------------------------------------------
+
+6411:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+6411:001 DAC1_OUT1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x8000     0x7FFF     	i16	RW	1
+
+
+
+Variable - 6423 - Analog Input IRQ Enable:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0x1        	bool	RW	0
+
+
+
+Array - 6424 - Analog Input IRQ Upper Limit:
+---------------------------------------------------------------------------
+
+6424:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6424:001 Analog Input IRQ Upper Limit 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7FFD8    0x20       0x7FFD8    	i32	RW	0
+
+6424:002 Analog Input IRQ Upper Limit 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x0        0xFFFF     	i32	RW	0
+
+6424:003 Analog Input IRQ Upper Limit 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x0        0xFFFF     	i32	RW	0
+
+6424:004 Analog Input IRQ Upper Limit 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x0        0xFFFF     	i32	RW	0
+
+6424:005 Analog Input IRQ Upper Limit 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7FFD8    0x20       0x7FFD8    	i32	RW	0
+
+6424:006 Analog Input IRQ Upper Limit 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x7FFD8    0x20       0x7FFD8    	i32	RW	0
+
+6424:007 Analog Input IRQ Upper Limit 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x50       0x80000000 0xFFFF     	i32	RW	0
+
+6424:008 Analog Input IRQ Upper Limit 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:009 Analog Input IRQ Upper Limit 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:010 Analog Input IRQ Upper Limit 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:011 Analog Input IRQ Upper Limit 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:012 Analog Input IRQ Upper Limit 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:013 Analog Input IRQ Upper Limit 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:014 Analog Input IRQ Upper Limit 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:015 Analog Input IRQ Upper Limit 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:016 Analog Input IRQ Upper Limit 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6424:017 Analog Input IRQ Upper Limit 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0xFFFF     	i32	RW	0
+
+6424:018 Analog Input IRQ Upper Limit 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0xFFFF     	i32	RW	0
+
+6424:019 Analog Input IRQ Upper Limit 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0xFFFF     	i32	RW	0
+
+6424:020 Analog Input IRQ Upper Limit 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0xFFFF     	i32	RW	0
+
+
+
+Array - 6425 - Analog Input IRQ Lower Limit:
+---------------------------------------------------------------------------
+
+6425:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6425:001 Analog Input IRQ Lower Limit 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20       0x20       0x7FFD8    	i32	RW	0
+
+6425:002 Analog Input IRQ Lower Limit 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     	i32	RW	0
+
+6425:003 Analog Input IRQ Lower Limit 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     	i32	RW	0
+
+6425:004 Analog Input IRQ Lower Limit 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     	i32	RW	0
+
+6425:005 Analog Input IRQ Lower Limit 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20       0x20       0x7FFD8    	i32	RW	0
+
+6425:006 Analog Input IRQ Lower Limit 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20       0x20       0x7FFD8    	i32	RW	0
+
+6425:007 Analog Input IRQ Lower Limit 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4B       0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:008 Analog Input IRQ Lower Limit 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:009 Analog Input IRQ Lower Limit 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:010 Analog Input IRQ Lower Limit 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:011 Analog Input IRQ Lower Limit 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:012 Analog Input IRQ Lower Limit 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:013 Analog Input IRQ Lower Limit 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:014 Analog Input IRQ Lower Limit 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:015 Analog Input IRQ Lower Limit 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:016 Analog Input IRQ Lower Limit 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFFFF     0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6425:017 Analog Input IRQ Lower Limit 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0xFFFF     	i32	RW	0
+
+6425:018 Analog Input IRQ Lower Limit 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0xFFFF     	i32	RW	0
+
+6425:019 Analog Input IRQ Lower Limit 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0xFFFF     	i32	RW	0
+
+6425:020 Analog Input IRQ Lower Limit 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0xFFFF     	i32	RW	0
+
+
+
+Array - 6426 - Analog Input IRQ Delta:
+---------------------------------------------------------------------------
+
+6426:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6426:001 Analog Input IRQ Delta 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:002 Analog Input IRQ Delta 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:003 Analog Input IRQ Delta 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:004 Analog Input IRQ Delta 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:005 Analog Input IRQ Delta 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:006 Analog Input IRQ Delta 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:007 Analog Input IRQ Delta 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:008 Analog Input IRQ Delta 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:009 Analog Input IRQ Delta 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:010 Analog Input IRQ Delta 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:011 Analog Input IRQ Delta 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:012 Analog Input IRQ Delta 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x100      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:013 Analog Input IRQ Delta 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x100      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:014 Analog Input IRQ Delta 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x100      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:015 Analog Input IRQ Delta 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x320      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:016 Analog Input IRQ Delta 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x320      0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:017 Analog Input IRQ Delta 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:018 Analog Input IRQ Delta 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:019 Analog Input IRQ Delta 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6426:020 Analog Input IRQ Delta 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 6427 - Analog Input IRQ Delta Negative:
+---------------------------------------------------------------------------
+
+6427:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6427:001 Analog Input IRQ Delta Negative 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:002 Analog Input IRQ Delta Negative 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:003 Analog Input IRQ Delta Negative 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:004 Analog Input IRQ Delta Negative 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:005 Analog Input IRQ Delta Negative 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:006 Analog Input IRQ Delta Negative 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:007 Analog Input IRQ Delta Negative 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:008 Analog Input IRQ Delta Negative 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:009 Analog Input IRQ Delta Negative 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:010 Analog Input IRQ Delta Negative 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:011 Analog Input IRQ Delta Negative 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:012 Analog Input IRQ Delta Negative 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:013 Analog Input IRQ Delta Negative 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:014 Analog Input IRQ Delta Negative 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:015 Analog Input IRQ Delta Negative 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:016 Analog Input IRQ Delta Negative 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:017 Analog Input IRQ Delta Negative 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:018 Analog Input IRQ Delta Negative 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:019 Analog Input IRQ Delta Negative 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6427:020 Analog Input IRQ Delta Negative 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 6428 - Analog Input IRQ Delta Positive:
+---------------------------------------------------------------------------
+
+6428:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6428:001 Analog Input IRQ Delta Positive 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:002 Analog Input IRQ Delta Positive 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:003 Analog Input IRQ Delta Positive 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:004 Analog Input IRQ Delta Positive 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:005 Analog Input IRQ Delta Positive 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:006 Analog Input IRQ Delta Positive 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:007 Analog Input IRQ Delta Positive 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:008 Analog Input IRQ Delta Positive 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:009 Analog Input IRQ Delta Positive 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:010 Analog Input IRQ Delta Positive 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:011 Analog Input IRQ Delta Positive 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:012 Analog Input IRQ Delta Positive 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:013 Analog Input IRQ Delta Positive 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:014 Analog Input IRQ Delta Positive 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:015 Analog Input IRQ Delta Positive 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:016 Analog Input IRQ Delta Positive 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x640      0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:017 Analog Input IRQ Delta Positive 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:018 Analog Input IRQ Delta Positive 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:019 Analog Input IRQ Delta Positive 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+6428:020 Analog Input IRQ Delta Positive 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E80     0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 6431 - Analog Input Offset Integer:
+---------------------------------------------------------------------------
+
+6431:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6431:001 Analog Input Offset 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:002 Analog Input Offset 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:003 Analog Input Offset 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:004 Analog Input Offset 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:005 Analog Input Offset 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:006 Analog Input Offset 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:007 Analog Input Offset 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:008 Analog Input Offset 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:009 Analog Input Offset 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:010 Analog Input Offset 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:011 Analog Input Offset 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:012 Analog Input Offset 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:013 Analog Input Offset 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:014 Analog Input Offset 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:015 Analog Input Offset 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:016 Analog Input Offset 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:017 Analog Input Offset 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:018 Analog Input Offset 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:019 Analog Input Offset 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6431:020 Analog Input Offset 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+
+
+Array - 6432 - Analog Input Prescale Integer:
+---------------------------------------------------------------------------
+
+6432:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x14       0x0        0xFF       	u8	CONST	0
+
+6432:001 Analog Input Prescale 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:002 Analog Input Prescale 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:003 Analog Input Prescale 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:004 Analog Input Prescale 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:005 Analog Input Prescale 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:006 Analog Input Prescale 5
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:007 Analog Input Prescale 6
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:008 Analog Input Prescale 7
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:009 Analog Input Prescale 8
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:010 Analog Input Prescale 9
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:011 Analog Input Prescale 10
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:012 Analog Input Prescale 11
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:013 Analog Input Prescale 12
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:014 Analog Input Prescale 13
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:015 Analog Input Prescale 14
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:016 Analog Input Prescale 15
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:017 Analog Input Prescale 16
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:018 Analog Input Prescale 17
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:019 Analog Input Prescale 18
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+6432:020 Analog Input Prescale 19
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+
+
+Array - 6443 - Analog Output Error Mode 8-bit:
+---------------------------------------------------------------------------
+
+6443:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+6443:001 Error Mode 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+
+Array - 6444 - Analog Output Error Value:
+---------------------------------------------------------------------------
+
+6444:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+6444:001 Error Value 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+
+
+Array - 6446 - Analog Output Offset:
+---------------------------------------------------------------------------
+
+6446:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+6446:001 Analog Output Offset 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x80000000 0x7FFFFFFF 	i32	RW	0
+
+
+
+Array - 6447 - Analog Output Scalling:
+---------------------------------------------------------------------------
+
+6447:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFF       	u8	CONST	0
+
+6447:001 Analog Output Scalling 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x80000000 0x7FFFFFFF 	i32	RO	0
+
+
+
+-- Abbreviations --
+
+
+bool		BOOLEAN
+i16		INTEGER16
+i32		INTEGER32
+u8		UNSIGNED8
+u16		UNSIGNED16
+u32		UNSIGNED32
+r32		REAL32
+vstr		VISIBLE_STRING
+
+
+
+
+This document was created using Industrial Communication Creator 7.0.0.202112202107 by port GmbH

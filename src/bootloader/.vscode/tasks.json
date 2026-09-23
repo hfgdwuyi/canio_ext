@@ -1,0 +1,204 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Full project rebuild",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/../../build/bootloader",
+                "-j8"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/../../build/bootloader"
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Delete build",
+                "Create build directory",
+                "Create makefile"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build project",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/../../build/bootloader",
+                "-j8"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/../../build/bootloader"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Delete build",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "${workspaceFolder}/../../build/bootloader"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Create makefile",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                "${workspaceFolder}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/../../build/bootloader"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Create build directory",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "../../build/bootloader"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Re-build project",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/../../build/bootloader",
+                "--clean-first",
+                "-v",
+                "-j8"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/../../build/bootloader"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Clean project (artifacts only)",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/../../build/bootloader",
+                "--target",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/../../build/bootloader"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Clean project (delete build dir)",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "${workspaceFolder}/../../build/bootloader"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "CubeProg: Flash project (SWD)",
+            "command": "STM32_Programmer_CLI",
+            "args": [
+                "--connect",
+                "port=swd",
+                "--download",
+                "${workspaceFolder}/../../build/bootloader/bootloader.hex",
+                "-hardRst"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Start JDB_Server",
+            "command": "JLinkGDBServerCL",
+            "args": [
+                "-device",
+                "STM32H750XB",
+                "-singlerun"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "close": true,
+                "reveal": "never"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Start arm-none-eabi-gdb",
+            "command": "arm-none-eabi-gdb",
+            "args": [
+                "${workspaceFolder}/../../build/bootloader/bootloader.hex",
+                "-x",
+                "${workspaceFolder}/../../scripts/program_bl.gdbinit"
+            ],
+            "presentation": {
+                "close": true,
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Jlink program",
+            "dependsOn": [
+                "Start JDB_Server",
+                "Start arm-none-eabi-gdb"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Upload firmware",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "interface/jlink.cfg",
+                "-c",
+                "\"transport select swd\"",
+                "-f",
+                "target/stm32h7x.cfg",
+                "-c",
+                "\"program ${workspaceFolder}/../../build/bootloader/bootloader.hex verify reset exit\""
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

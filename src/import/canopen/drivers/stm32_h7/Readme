@@ -1,0 +1,64 @@
+Driverpackage for STM32H7xx
+===========================
+
+CPU-Family: STM32H7xx
+--------------------------------------------------------------
+
+CPU-typ
+-------
+STM32H743x
+
+
+Hardware
+--------
+Nucleo-H743ZI
+CPU-clock (PLL): 400MHz
+Timer: SysTick
+
+
+Compiler
+--------
+Keil ARMCC v5.26.0 / Workbench µVision5.
+
+
+Timer
+-----
+1kHz (1ms)
+
+
+CAN Clock (APB1)
+---------
+80MHz
+
+
+CAN1-Pins
+--------
+RX: PD0
+TX: PD1
+
+CAN2-Pins
+--------
+RX: PB5
+TX: PB6
+
+USART3 (APB1)
+------
+RxD: PD9
+TxD: PD8
+115200Baud 8N1
+
+Notes:
+----------------------------------------------------------------------------------------
+1.
+Debug output ( printf() ) is optional possible. The output is routed to USART3 (BaudRate=115200). 
+The compiler switch "CONFIG_NO_PRINTF" is set in the driver file examples.h.
+If this define is set no printf output is generated. (default setting)
+2.
+The driver used the STM-HAL STM32Cube_FW_H7_V1.7.0 from the STM32CubeH7 Firmware Package.
+Before you can build and run the examples, 
+please download the firmware package from the ST websites and copy it into the driver folder (../driver/stm32_h7).
+In the example projects the include paths to this STM32CubeH7 Firmware package are relatively created.
+e.g.:  
+..\..\..\drivers\stm32_h7\STM32Cube_FW_H7_V1.7.0\Drivers\STM32H7xx_HAL_Driver\Inc
+
+That means the compiler is looking for the package right there.

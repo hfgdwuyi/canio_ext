@@ -1,0 +1,116 @@
+{
+    "folders": [
+    {
+        "path": ".."
+    },
+    {
+        "path": "../../bsp"
+    },
+    {
+        "path": "../../common"
+    },
+    {
+        "path": "../../external"
+    },
+    {
+        "path": "../../import"
+    }
+    ],
+	"settings": {
+		"cmake.autoSelectActiveFolder": false,
+		"cmake.buildDirectory": "${workspaceFolder}/../../__build/application",
+		"cmake.defaultVariants": {
+
+			"buildType": {
+				"default": "debug",
+				"description": "The build type.",
+				"choices": {
+					"debug": {
+						"short": "Debug",
+						"long": "Disable optimizations - include debug information.",
+						"buildType": "Debug"
+					},
+					"release": {
+						"short": "Release",
+						"long": "Optimize for speed - exclude debug information.",
+						"buildType": "Release"
+					},
+					"debug_rtt": {
+						"short": "Debug with RTT",
+						"long": "Debug with output to RTT",
+						"buildType": "RTT"
+					},
+					"debug_itm": {
+						"short": "Debug with ITM",
+						"long": "Debug with output to ITM",
+						"buildType": "ITM"
+					}
+				}
+			}
+		},
+		"files.associations": {
+            "hal.h": "c",
+            "stm32h7xx_hal.h": "c",
+            "stm32h7xx_hal_conf.h": "c",
+            "stdint-gcc.h": "c",
+            "string.h": "c",
+            "stdbool.h": "c",
+            "stdio.h": "c",
+            "stm32h745xx.h": "c",
+            "cstdint": "c",
+            "stm32h7xx_hal_fdcan.h": "c",
+            "stm32h7xx_ll_dma.h": "c",
+            "mem_map.h": "c",
+            "crc_ctrl.h": "c",
+            "bsp_wtdg.h": "c",
+            "stm32h7xx_hal_nor.h": "c",
+            "sys_config.h": "c",
+            "ctype.h": "c",
+            "stdlib.h": "c",
+            "w25xx_qspi.h": "c",
+            "at24xx.h": "c",
+            "prog_ctrl.h": "c",
+            "usbd_cdc_interface.h": "c",
+            "sysinit.h": "c",
+            "co_init.h": "c",
+            "error_defines.h": "c"
+        },
+        "cortex-debug.variableUseNaturalFormat": true,
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "JLink launch",
+                "cwd": "${workspaceFolder}",
+                "executable": "${workspaceFolder}/../../__build/application/application.hex",
+                "request": "launch",
+                "type": "cortex-debug",
+                "servertype": "jlink",
+                "serverpath": "C:/Program Files/SEGGER/JLink/JLinkGDBServerCL.exe",
+                "device": "STM32H750XB",
+                "interface": "swd",
+                "runToEntryPoint": "main",
+                "svdFile": "${workspaceFolder}/../../src/common/STM32H750x.svd",
+                "symbolFiles": [
+                    "${workspaceFolder}/../../__build/application/application.elf"
+                ],
+                "swoConfig": {
+                    "enabled": true,
+                    "cpuFrequency": 400000000,
+                    "swoFrequency": 4000000,
+                    "source": "probe",
+                    "decoders": [
+                        {
+                            "label": "ITM port 0 output",
+                            "type": "console",
+                            "port": 0,
+                            "showOnStartup": true,
+                            "encoding": "ascii"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

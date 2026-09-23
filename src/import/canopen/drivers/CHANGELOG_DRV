@@ -1,0 +1,1116 @@
+CHANGELOG CANopen Driver V4.4
+==========================================================================
+
+4.4.185								2020-03-31
+Driver:
+- STM32H7xx
+    - new driver package
+	- multiline, BasicCAN, 11+29bit-IDs
+	- examples created with Keil µVision v5.26
+    
+4.4.184								2020-02-26
+Driver:
+- STM32G4xx
+    - new driver package
+	- multiline, BasicCAN, 11+29bit-IDs
+	- examples created with Keil µVision v5.26
+    
+4.4.183								2020-01-28
+Driver:
+- IXXAT VCI (PC interface under Windows)
+    - new driver package
+	- multiline, BasicCAN, 11+29bit-IDs
+	- examples created with Visual Studio 2012
+    
+4.4.182                             2019-11-08
+Driver:
+- infineon Aurix TC23x
+    - update driver package for CAN gateway mode
+    - bugfix CAN part with FullCAN mode
+	- add example projects for gateway mode with IDE HighTec
+    
+4.4.181								2019-10-22
+Driver:
+- TI Tiva TM4C123G
+    - new driver package (Bare-Metal)
+	- single line, BasicCAN, 11+29bit-IDs
+	- examples created with TI CodeComposer v9.1
+    
+4.4.180                             2019-10-11
+Driver:
+- NXP S32K144
+    - Bugfix CAN driver in case Multiline (Jira P00201-159)
+    - update driver with newer NXP helper sources
+    - add examples s2,s3 with S32 Design Studio for ARM 2.0
+    
+4.4.179                             2019-10-08
+Driver:
+- STM32F4xx FreeRTOS
+    - update to new STM-HAL cubeSuitef4 v1.24 and FreeRTOS v10.x
+    - adaption for new target typ STM32F429(STM32F429-Nucleo)
+    - add examples for typ STM32F429 with Atollic Studio v9.3 and Keil
+    
+4.4.178                             2019-09-06
+Driver:
+- Renesas RL78F14
+    - driver + examples: porting with Renesas CS+ (former CubeSuite) v8.02
+- Renesas RL78F13
+    - driver + examples: porting with Renesas CS+ (former CubeSuite) v8.02
+    
+4.4.177                             2019-08-27
+Driver:
+- TI MSP432E4x FreeRTOS
+	- new driver package
+    - single line, BasicCAN, 11+29bit-IDs
+    - examples: TI Code Composer v8.3
+    - J1939 example
+    
+4.4.176                             2019-07-30
+Driver:
+- Xilinx ZYNC Ultrascale QNX
+	- new driver package
+    - single line, BasicCAN, 11bit-IDs
+    - examples: QNX Momentics Version: 7.0.3
+    
+4.4.175                             2019-06-14
+Driver:
+- STM32F4xx
+	- porting and test with gcc compiler
+    - add examples for Atollic TrueSTUDIO for ARM v8.1.0
+	
+4.4.174                             2019-05-23
+Driver:
+- STM32F4xx
+    - adaption to new STM-HAL cubeSuitef4 v1.24
+    - adaption for new target typ STM32F446(Nucleo board F446RE)
+    - add examples for typ STM32F446
+    
+4.4.173                             2019-05-17
+Driver:
+- Renesas RX72M
+    - new driver package
+    - multiline, BasicCAN, 11bit-IDs
+    - examples: e2 studio Version: 7.3.0
+    
+4.4.172								2019-04-03
+Driver:
+- Vector XL Driver Library (Windows)
+    - new driver package
+	- multiline, BasicCAN, 11+29bit-IDs
+	- examples created with Visual Studio 2012
+
+4.4.171								2019-03-12
+Driver:
+- TI Tiva TM4C129X FreeRTOS with Heap
+    - new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+	- examples with FreeRTOS v10 and Heap support, created with Keil µVision v5.26
+    
+4.4.170                             2019-03-08
+Driver:
+- ST STM32F413
+	- new driver package
+	- multiline, BasicCAN+FullCAN, 11+29bit-IDs, redundancy
+    - type of STM32F4x device with support 3rd CAN controller
+    
+4.4.169                             2019-02-01
+Driver:
+- Renesas RZ/T1 R4F
+	- new driver package
+	- multiline, BasicCAN, 11+29bit-IDs
+    
+4.4.168                             2019-01-09
+Driver:
+- Horch Windows
+	- new driver package
+	- single line, BasicCAN 11bit-IDs + 29bit-IDs
+
+
+4.4.167                             2018-12-18
+Driver:
+- NXP S12Z
+    - new driver package
+    - single line, BasicCAN, 11bit-IDs
+    
+4.4.166                             2018-12-12
+Driver:
+- Infineon Aurix TC23x
+	- add project for J1939 example
+
+4.4.165                             2018-12-06
+Driver:
+- Renesas RX65N FreeRTOS
+    - new driver package
+    - multiline, BasicCAN, 11bit-IDs
+    
+4.4.164								2018-11-27
+Driver:
+- TI TMS320DM6435 with Sysbios
+	- bugfix driver for save atomic bit operations
+    
+4.4.163                             2018-11-16
+Driver:
+- ST STM32F10x
+    - add IAR projects for the examples
+
+4.4.162                             2018-11-06
+Driver:
+- Renesas RH850D1M
+    - new driver package
+    - single line, BasicCAN, 11+29bit-IDs
+    
+4.4.161                             2018-10-16
+Driver:
+- STM32F7xx FreeRTOS
+    - update driver package with CAN3 support
+    - add example projects (s1,s4) with STM32f767ZI target
+    
+4.4.160                             2018-10-09
+Driver:
+- Xilinx Zync7020
+    - new driver package
+    - single line, BasicCAN, 11+29bit-IDs
+    
+4.4.159								2018-09-07
+Driver:
+- ST STM32F10x
+    - update driver for support vitual multiline
+    - add multiline example and update other for support Keil uVision5 v5.25
+    
+4.4.158                             2018-08-30
+Driver:
+- Renesas SH72544R 
+    - new driver package
+
+4.4.157                             2018-08-30
+Driver:
+- TI TMS320F28379 with MCP2517FD and Sysbios
+    - add driver and example variants for dual core operation (MCP2517FD run on CPU2)
+    
+4.4.156                             2018-08-17
+Driver:
+- TI TMS320F28379 with MCP2517FD and Sysbios
+    - new driver package
+    - multi line, BasicCAN, 11+29bit-IDs
+    - extended CAN-controllers MCP2517FD are connected via SPI-interfaces
+    
+4.4.155                             2018-08-06
+Driver:
+- TI Hercules TMS570LC
+    - new driver package
+    - multi line, BasicCAN, 11+29bit-IDs
+
+4.4.154                             2018-07-24
+Driver:
+- Renesas V850E2/F4G-L
+    - adjust NMEA example configuration
+
+4.4.153                             2018-06-25
+Driver:
+- Renesas RX71M
+    - new driver package
+    - examples: e2 studio Version: 6.3.0
+    
+4.4.152                             2018-06-12
+Driver:
+- STM32F0xx
+    - update driver: add startup for IAR porting
+    - add examples: - IAR Workbench for ARM v8.22
+                       
+4.4.151                             2018-05-08
+Driver:
+- STM32F0xx
+    - update driver: rework for new ST HAL-layer v1.9.0
+    - update examples: - Keil ?Vision5 
+                       - additional s1 impemented with ST Systemworkbench STM32 (with GCC compiler)
+    
+4.4.150                             2018-03-12
+Driver:
+- infineon Aurix TC23x
+    - update driver: CAN bittiming with Fractional Divider Mode (optionally)
+    
+4.4.149
+Driver:
+- Renesas V850E2/F4G-L
+	- add driver support for NMEA2000
+
+4.4.148
+Driver:
+- NXP S32K144
+	- new driver package
+	- multi line, BasicCAN, 11bit-IDs
+
+4.4.147								2018-01-26
+Driver:
+- Spansion/Fujitsu MB9BF51x
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs
+    
+4.4.146								2018-01-17
+Driver:
+- TI TMS320DM6435 with Sysbios
+	- new driver package
+	- singleline, 11+29bit-IDs, BasicCAN, Autobaud
+    
+4.4.145								2018-01-16
+Driver:
+- TI TMS320F28379 with Sysbios
+        - adjustments to define usage to fit designtool
+        - refresh of examples with designtool
+
+4.4.144								2017-12-06
+Driver:
+- TI TMS320F28379 with Sysbios
+	- new driver package
+	- multiline, 11bit-IDs, BasicCAN
+
+4.4.143								2017-11-08
+Driver:
+- TI TMS320F28035
+	- new driver package
+	- singleline, 11bit-IDs, BasicCAN+FullCAN
+
+4.4.142								2017-09-25
+Driver:
+-RX231
+	- add support IAR RX Compiler
+	- add IAR demo projects
+
+4.4.141								2017-08-31
+Driver:
+- Atmel AT90CAN128
+	- add 29bit-IDs support
+    
+4.4.140                             2017-08-28
+Driver:
+- infineon XMC4300
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs
+    
+4.4.139                             2017-08-21
+Driver:
+- DP socketCan 
+    -minor update:
+        - change malloc to calloc
+        - fix array memory access in init_linux.c
+
+4.4.138                             2017-08-18
+Driver:
+- STM32F4xx ThreadX
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs, redundancy
+	- example projects s1, s2, m1, s4, s11 created with ThreadX
+
+4.4.137                             2017-08-10
+Driver:
+- TI Hercules TMS570LS
+    - new driver package
+    - multi line, BasicCAN, 11+29bit-IDs
+
+4.4.136                             2017-07-28
+Driver:
+- Atmel SAM4E FreeRTOS
+    - new driver package
+    - multi line, BasicCAN, 11+29bit-IDs
+	- example projects s1, s2, m1, s4 created with FreeRTOS
+
+4.4.135                             2017-07-20
+Driver:
+- STM32F7xx FreeRTOS
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs, redundancy
+	- example projects s1, s2, m1, s4, s11 created with FreeRTOS
+
+4.4.134								2017-07-14
+Driver:
+- TI Sitara AM335x
+    - bugfix driver in CAN transmit interrupt
+
+4.4.133								2017-05-30
+Driver:
+- ST STM32F105_F107
+    - rework driver package and examples for support Keil uVision5 and STM HAL layer
+
+4.4.132                             2017-04-12
+Driver:
+- infineon Aurix TC23x
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs
+	- example projects s1, s2, s3, s4, m1, m2, m3 with IDE HighTec
+
+4.4.131                             2017-03-17
+Driver:
+- STM32F4xx FreeRTOS
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs, redundancy
+	- example projects s1, s2, m1, s4, s11 created with FreeRTOS
+
+4.4.130                             2017-03-10
+Driver:
+- STM32F4xx Keil RTX
+    - new driver package
+    - multi line, BasicCAN+FullCAN, 11+29bit-IDs, redundancy
+	- example projects s1, s2, m1, s4, s11 created with Keil RTX RTOS
+
+4.4.129								2017-02-28
+Driver:
+- ST STM32F10x
+    - rework driver package and examples for support Keil uVision5 and STM HAL layer
+
+4.4.128								2017-01-24
+Driver:
+- NECV850E2Fx4 (pd70f3580)
+    - update CAN driver for 29bit ID support
+
+4.4.127								2017-01-19
+Driver:
+- TI Tiva TM4C129X FreeRTOS
+    - update driver package and examples for FreeRTOS without Heap
+
+4.4.126								2016-12-23
+Driver:
+- Kvaser canlib Windows
+    - update driver package with canlib v5.17
+	- add examples with Microsoft Visual Studio 2010
+
+4.4.125								2016-11-14
+Driver:
+- TI Tiva TM4C129X FreeRTOS
+    - new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+	- examples with FreeRTOS support
+
+4.4.124								2016-11-01
+Driver:
+- infineon XMC4200
+	- add FullCAN mode
+
+4.4.123								2016-10-21
+Driver:
+- STM32L4xx FreeRTOS and CAN sleep
+	- new driver package
+	- single line, BasicCAN+FullCAN, 11+29bit-IDs
+	- examples with FreeRTOS support
+
+4.4.122								2016-09-27
+Driver:
+- NXP LPC4078_4088
+    - new driver package
+	- multi line, FullCAN, 11bit-IDs
+
+4.4.121								2016-09-20
+Driver:
+- infineon XMC4200
+	- new driver package
+	- multi line, BasicCAN, 11+29bit-IDs
+
+4.4.120								2016-09-01
+Driver:
+- Freescale Kinetis KE06
+    - new driver package
+	- single line, BasicCAN, 11bit-IDs
+
+4.4.119								2016-08-22
+Driver:
+- NXP LPC15XX
+    - new driver package
+	- single line, FullCAN, 11+29bit-IDs
+
+4.4.118								2016-08-12
+Driver:
+- TI TMS320F28075
+    - new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+
+4.4.117								2016-08-05
+Driver:
+- NXP LPC1778_1788
+    - new driver package
+	- multi line, FullCAN, 11bit-IDs
+
+4.4.116
+Driver:
+- STM32F7xx
+    - new driver package
+	- multi line, FullCAN, 11+29bit-IDs, redundancy
+
+4.4.115								2016-04-06
+Driver:
+- Freescale HCS12
+    - update driver and examples with CodeWarrior v5.2 (IDE v5.9)
+
+4.4.114								2016-04-01
+Driver:
+- Linux SocketCAN
+    - update driver for virtual multiline
+	- add example s32 with 4 lines for virtual multiline
+
+4.4.113								2016-03-22
+Driver:
+- TI TMS320F28377
+    - new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+
+4.4.112								2016-03-10
+Driver:
+- Renesas Synergy
+    - new driver package
+	- single line, BasicCAN, 11bit-IDs
+	- examples with ThreadX OS support
+
+4.4.111								2016-02-25
+Driver:
+- TI AM437x sitara
+    - new driver package
+	- single line + virtuelle multiline, BasicCAN, 11+29bit-IDs
+
+4.4.110								2015-12-04
+Driver:
+- TMS320F28335
+    - update driver and examples to TI Code Composer Studio v6.1
+
+4.4.109								2015-12-02
+Driver:
+- Freescale Kinetis K10/K60
+	- new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+- Freescale Kinetis K10/K60 with uCOSII support
+	- new driver package
+	- single line, BasicCAN, 11+29bit-IDs
+
+4.4.108								2015-11-13
+Driver:
+- infineon XMC4800
+	- new driver package
+	- multi line, BasicCAN, 11+29bit-IDs
+- STM32F0xx
+	- bugfix in CAN-driver
+
+4.4.107								2015-11-02
+Driver:
+- STM32L4xx
+	- new driver package
+	- single line, BasicCAN+FullCAN, 11+29bit-IDs
+
+4.4.106								2015-07-16
+Driver:
+- Renesas RX231
+	- new driver package
+	- single line, BasicCAN
+- Atmel AT90CAN128
+	- add header with driver version string
+
+4.4.105								2015-06-29
+Driver:
+- can4linux
+    - adaption to new version can4linux API types
+- Fujitsu MB96F348
+	- update driver especially can_ccan
+- NECV850E2Fx4 (pd70f3580)
+	- update driver especially can_fcn
+
+4.4.104								2015-06-18
+Driver:
+- Atmel AT90CAN128
+    - update driver
+	- add examples for Atmel Studio v6.2 environment
+
+4.4.103								2015-05-25
+Driver:
+- STM32F4xx
+    - update for support redundancy feature
+	- add examples s11, m11 for test with redundancy
+
+4.4.102								2015-04-10
+Driver:
+- Microchip dsPIC33EVxx
+    - new driver package
+	- single line, FullCan
+- Freescale Kinetis K2x
+    - update driver after test with K22x on customer HW
+
+4.4.101								2015-03-30
+Driver:
+- Microchip dsPIC33EPxx
+    - new driver package
+	- multi line, FullCan
+
+4.4.100								2015-03-19
+Driver:
+- Freescale Kinetis K2x
+    - new driver package
+	- single line, BasicCan
+- TI TMS320F2808/2812/28335
+    - update code co_codecomposer.h
+	  - for CONFIG_CPU_TYPE_TMS320F28XX compiler define CONFIG_EMULATE_U64 removed
+
+4.4.99								2014-12-12
+Driver:
+- Renesas RX63N
+    - porting driver to IAR RX Compiler
+	- add example projects for IAR-Workbench
+
+4.4.98								2014-10-16
+Driver:
+- NXP LPC43xx
+    - new driver package
+	- multiline, FullCan
+
+4.4.97
+Driver:
+- STM32F4xx
+    - adaption to new STM-HAL cubeSuitef4 v1.3
+	- example projects s1, s2, m1, s4 created with Keil Compiler ARMCC v5.1.0 uVision5
+	- add 29bit-ID support (bxcan)
+- STM32F3xx
+	- add 29bit-ID support (bxcan)
+
+4.4.96								2014-08-27
+Driver:
+- STM32F3xx
+    - new driver package
+	- single Line
+	- full can
+
+4.4.95								2014-08-12
+Driver:
+- Renesas RL78F14
+    - new driver package
+	- single Line
+	- basic can
+
+4.4.94								2014-08-04
+Driver:
+- infineon XMC4500 (ARM Cortex-M4)
+	- 29bit identifier implemented
+
+4.4.93								2014-07-18
+Driver:
+- TI sitara AM335x
+	- update driver and examples for TI sdk 1.1.0.4 and ICE board Rev2.1A
+
+4.4.92								2014-07-03
+Driver:
+- Renesas NECV850 PD70F3377
+	- update FCAN driver for 29bit IDs
+
+4.4.91								2014-05-06
+Driver:
+- PIC32MX
+	- update driver and examples to compiler XC32 v1.31 (MPLABX v2.10)
+
+4.4.90								2014-04-28
+Driver:
+- Freescale MC56F827XX
+	- new driver package
+	- singleline, basic CAN
+	- configurable in designtool 2.3.0
+
+4.4.89								2014-04-11
+Driver:
+- Renesas RX64M
+	- new driver package
+	- multiline
+	- configurable in designtool 2.3
+
+4.4.88								2014-04-04
+Driver:
+- STM32F0xx
+	- new driver package
+	- singleline, FullCAN
+
+4.4.87								2014-03-06
+Driver:
+- infineon XMC4500 (ARM Cortex-M4)
+    - driver update for multiline
+	- example projects s4 with workbench Keil and infineon dave3 added
+- Renesas RX63N
+	- update in cpu.c (enable/disable interrupt functions for canLine2)
+
+4.4.86								2014-02-25
+Driver:
+- Renesas R-IN32M3
+	- new driver package
+	- single line, basic CAN
+	- implemented with HW-RTOS support
+
+4.4.85								2014-01-30
+Driver:
+- Renesas NECV850 PD70F3377
+	- package updated to IAR Workbench v3.81
+	- adaption to cpu type pd70f3371
+	- examples for pd70f3371 available
+
+
+4.4.83								2013-12-17
+Driver:
+- Atmel SAM4E uCOSII
+	- new driver package
+	- single line
+	- implemented with uCOSII support
+
+4.4.82								2013-12-06
+Driver:
+- Atmel SAM4E
+	- new driver package
+	- single line
+
+4.4.81								2013-11-11
+Driver:
+- STM32F10x
+	- put actual file co_keil.h to driver package
+
+
+4.4.80								2013-10-15
+Driver:
+- Renesas V850E2ML4
+	- new driver package
+	- single line on CAN0
+
+4.4.76								2013-07-18
+Driver:
+- Renesas RL78F13
+	- add no global vars
+
+
+4.4.75								2013-07-09
+Driver:
+- Renesas RX62N
+	- new driver package
+	- single line on CAN0
+
+4.4.74								2013-06-26
+Driver:
+- Fujitsu MB9B524K
+	- new driver package
+	- single line, fullcan based on Bosch C_CAN
+- CPC Windows
+	- add example for s4 in MS Visual Studio 2010
+
+4.4.73								2013-05-07
+Driver:
+- TI sitara AM335x
+	- new driver package
+	- single line, fullcan
+	- driver and examples implemented with OS support (SYSBIOS from TI)
+
+4.4.72								2013-04-25
+Driver:
+- infineon XC164CS
+    - driver adapted on Starterkit XC164CS v3.2 from infineon
+	- driver and example projects updated to toolchain Keil uVision4 /Compiler v7.04
+
+4.4.71								2013-04-17
+Driver:
+- STM32F4xx
+    - new driver package
+
+
+4.4.70								2013-04-02
+Driver:
+- STM32F10x
+    - bit-banding for interrupt lock
+    - SET_BIT changed to CO_SET_BIT
+    - RESET_BIT changed to CO_RESET_BIT
+- SocketCAN  driver package
+	- the socketCAN read command is set to non blocking to default
+- STM32F2xx
+    - multiline added
+    - st system files moved to drivers/stm32_f2
+    - bit-banding for interrupt lock
+    - SET_BIT changed to CO_SET_BIT
+    - RESET_BIT changed to CO_RESET_BIT
+
+
+4.4.69								2013-03-22
+Driver:
+- STM32F107
+    - new driver package
+    - Design Tool Version 2.2.45
+- SocketCAN  driver package
+	- adaption for support m4d server
+	- the select command is set to non blocking to default
+	- fixed bug in multiline version
+- can4linux driver package
+	- initialize the rx struct in flushmbox function before used
+
+4.4.68								2013-02-14
+Driver:
+- TI C2000 concerto F28M35x
+    - new driver package
+	- single Line
+	- basic can
+- NECV850E2Fx4 (pd70f3580)
+    - bugfix in CAN interrupt handling
+
+4.4.67								2013-02-07
+Driver:
+- Windows CPC, upgrade to Multiline
+
+4.4.66								2013-01-22
+Driver:
+- Renesas RL78F13
+    - new driver package
+	- single Line
+	- basic can
+
+4.4.65								2013-01-29
+Driver:
+- TMS320F28335
+    - multiline implemented
+    - update examples to CodeComposer v5.2
+
+4.4.64								2012-12-20
+Driver:
+- PIC32MX
+    - multiline implemented
+
+4.4.63								2013-01-07
+Driver:
+- STM32
+    - expand interrupt-blocking SET/RESET macros for compiler IAR-CortexM3
+
+
+4.4.62								2012-12-03
+Driver:
+- LPC1768
+	- init acceptance filter corrected (multiline)
+
+4.4.60								2012-10-23
+Driver:
+- infineon XMC4500 (ARM Cortex-M4)
+	- new driver package
+    - single Line
+	- basic can
+- SocketCAN  driver package
+	- can now be used with #define CONFIG_NO_GLOBAL_VARS
+	- fixed bug which caused SocketCAN error messages
+	  to be interpreted as CAN frames.
+- can4linux driver package
+	- removed time out from select call
+
+4.4.59								2012-09-20
+Driver:
+- NECV850E2Fx4 (pd70f3580)
+    - Multi Line
+	- Fullcan
+
+
+4.4.58								2012-07-27
+Driver:
+- SocketCAN							2012_08_02
+    - Multi Line version
+
+4.4.57								2012-07-03
+Driver:
+- STM32
+    - Restore_CPU_Interrupts
+    - gcc.h interrupt handling added
+    - ST-Lib 3.3 added
+
+
+4.4.56								2012-06-22
+Driver:
+- bugfixing and reworking linux SocketCAN
+- calling exit() after init errors,
+  can be disabled by using CONFIG_INIT_SHOULD_NOT_EXIT
+
+
+4.4.55								2012-06-20
+Driver:
+- MC9S08
+    - new driver package
+    - Design Tool Version 2.2.42
+
+
+4.4.54						2012-06-19
+Driver:
+- PIC32MX
+    - new driver package
+    - Design Tool Version 2.2.42
+
+4.4.53                                          2012-05-29
+Driver:
+- LPC1768
+    - deinit Timer corrected (cpu_lpc17.h, cpu_lpc17.c)
+
+
+4.4.51						2012-05-10
+Driver:
+- STM32F2xx
+    - new driver package
+    - Design Tool Version 2.2.41
+
+
+4.4.50						2012-04-05
+Driver:
+- RX63N
+    - new driver package
+    - Design Tool Version 2.2.40
+
+4.4.49                                          2012-02-21
+Driver:
+- LPC1768
+    - new driver package
+    - Design Tool Version 2.2.40
+
+4.4.48                                          2011-12-22
+Driver:
+- AT32UC3C
+    - new driver package
+    - Design Tool Version 2.2.39
+
+4.4.47                                          2011-08-10
+Driver:
+- MC56F8335
+    - 60MHz table corrected
+    - Code Warrior 8.2
+
+4.4.46                                          2011-06-21
+Driver:
+- M16C29
+    - Bittimingtable for 8MHz added
+- AVR
+    - CANEN requires some clocks to be actualize, too slow for AVR
+      -> disable channel and check for reactivation
+- AT89C51CC03
+    - CANary driver don't use CANEN, now.
+      (Problems on a different plattform.)
+
+4.4.45						2011-01-20
+Driver:
+- SocketCAN
+    - adopted to the latest SocketCAN version available in kernel 2.6.34
+    - set error mask to only report some specific CAN errors
+    - give some usage hints if CAN debug is enabled.
+- dsPic33F
+    - MPLAB C30 v8.60
+    - 40MHz bittiming table added
+- AVR
+    - call GetNext_TX_Request(), also if Insert_TX_Request()
+      returns an error
+    - use of sync channel in Fullcan mode removed (use id)
+- Freescale MCF5282
+    - disable interrupts corrected
+- Atmel AT91SAM7X
+    - double reference to timer variables removed,
+      if CONFIG_COLIB_TIMER is disabled
+- NXP LPC2368
+    - adapted to CrossWorks 1.7
+    - disable interrupt counter corrected
+
+4.4.44						2010-10-25
+Driver:
+- dsPic33F
+    - update for Redundancy Support
+- NEC PD70F3476
+    - new adaptation based on PD70F3377
+- TI/Luminary LM3S5B91
+    - new adaptation
+- TI/Luminary LM3S2900
+    - update to changes from the LM3S5B91 adaptation
+- STM32
+    - adapted to ST FW3 (currently only with CrossWorks)
+
+
+4.4.43						2010-04-26
+Driver:
+- TMS320F28xx
+    - init driver flags
+    - init RAM section (need e.g. for bootloader)
+- AVR
+    - AVR Studio projects added
+    - adaptation to save the object dictionary partly to the Code Flash
+      added for WinAVR(gcc)
+- Beck IPC 1x3
+    - new header environ.h for system includes
+- WinXP Embed AAEON
+    - first release
+- CPC Windows
+    - optional calls for busload measurements added
+- can4linux
+    - optional calls for busload measurements added
+    - stdio output disabled by default
+- CANopen Driver Package SocketCAN for Linux added
+
+
+4.4.42						2010-01-25
+Driver:
+- Beck IPC 1x3
+    - example projects actualized
+    - Stop_CAN() reworked - go in passive mode (e.g. for LSS)
+    - CAN error state check reworked
+- Sciopta driver with own Device driver interface added
+
+
+4.4.41                                          2009-12-21
+Driver:
+- ST STM32
+    - adaptation for Rowley CrossWorks CrossStudio 1.7 added
+    - adaptation for Tasking ARM VX 3.0r3 added
+    - using ST-FW 2.0 (the adaptation for FW 1.0 was removed)
+    - support of CONFIG_DRIVER_FAST_SORT added (exp.)
+    - FullCAN mode support added
+    - wait of a stable HSE state during the initialization
+- TI TMS320F2808/2812/28335
+    - update TMS320F2812 projects to the CCS 3.3 and
+      the TI C-Header v1.11
+    - small bugfix: wrong register names in BasicCAN mode
+    - configure the only one CAN controller of the TMS320F2812
+      as the default CAN (set in environ.h, was corrupt after
+      the multiline adaptations of the TMS320F28335)
+    - CONFIG_DRIVER_FAST_SORT implemented (exp.)
+     (can be set independent of CONFIG_FAST_SORT)
+- Infineon C167
+    - update of common files (e.g. cdriver.c)
+- SiLabs C8051F040
+    - SiLabs Toolchain updated to 3.61
+    - example projects:
+	drivers configuration changed to CONFIG_CAN_ACCESS_IO_MAP
+    - common C_CAN driver files updated:
+	- support of CONFIG_DRIVER_FAST_SORT added (exp.)
+	- support of 29bit Identifiers
+	- error state check reworked
+- Atmel T89C51CC01/AT89C51CC03
+    - Complex command line changed in can_89c51.h
+      Keil C51 v6.12 had problems with it (some modes didn't working)
+    - transmit object move to the last message buffer
+      (after transmit a RTR message the buffer switch to a receive buffer,
+       now with a lower priority than the normal receive buffer)
+    - Canary driver updated from different implementations
+	- ignore ext. identifier during receive
+	- Bitrate 500k for 16MHz CAN clock corrected
+    - common files update
+	- ValidCobId() without active Fast Sort -> List mode,
+	  ignore COBs with the wrong type.
+	  Need for Services, that can be switched between RX and TX
+	  (e.g. Flying master).
+	- Default Compiler Settings moved to an extra header
+- NXP LPC2368
+    - Singleline and Multiline support added
+
+
+4.4.40                                          2009-10-06
+Driver:
+- Atmel AT91SAM7X
+    - adaptation for CrossStudio 1.7 updated
+    - adaptation for IAR v5.11 updated
+    - using environ.h for hardware headers
+    - different macros for definition and declaration
+      of interrupt handlers
+    - check for bittiming value 0 - easier bittiming table definition
+- Atmel AT91SAM7A3
+    - IAR 5.11
+    - using environ.h for customer hardware/compiler headers
+    - check for unsupported bittiming settings
+- Atmel AVR
+    - easy WinAVR Makefile for s1 added
+    - SIGNAL() moved to ISR()
+    - bittiming not possible, if all bittiming values are configured to 0
+    - Bittiming table for 10MHz added (but untested!)
+    - ignore ext. IDs during receive
+- Microchip dsPIC30Fxxxx (e.g. dsPIC30F6010A)
+    - interrupt configuration set to 'auto_psv'
+    - check unconfigured bittiming values (all btr values 0)
+    - own bittiming settings possible
+    - configuration bit settings added to init_dspic30.c
+    - environ.h changed
+    - MPLAB IDE v8.33, C30 v3.12 tested
+- Silabs C8051F500
+    - using Silabs IDE v3.61
+    - changed NOP() to CAN_NOP()
+
+4.4.39                                          2009-08-14
+Driver:
+- Atmel AT91SAM9263 released
+- Fujitsu MB91467 update and bugfixes (common CAN Register addresses)
+  C_CAN driver part of the MB91467 actualized
+- DP CPC Windows: update to latest WDK from EMS W\FCnsche
+- NXP LPC2129: rework
+    - Multiline mode was adapted.
+    - The Interrupt entries were moved to cpu.c.
+      Within the driver can_lpc21.c you find a central
+      interrupt handler entry CAN_Int_handler() and
+      different handlers for RX,TX,Error, if needed.
+    - Keil adaptation was changed from CARM to Realview.
+    - LPC2129/rev0 Errata CAN.7 is configurable (environ.h)
+    - LPC2129/rev1 Errata CAN.1 is configurable (environ.h)
+    - Disable_CAN_Interrupts() don't disable the VIC. The
+      interrupt is disabled line depend in CANIER, now.
+- DP socketCan released
+
+
+4.4.38                                          2009-07-06
+Driver:
+- DP Horch/TCP works now also with Windows
+- ST Microelectronics STR911 driver release
+- Bosch C_CAN - 29Bit ID support added
+
+4.4.37						2009-05-15
+Driver:
+- VxWorks driver adaption to VxWorks V6.5
+- CPC Win32 - variable was not defined in Singleline mode - corrected
+- Silabs C8051F500 driver added
+- Atmel AVR - adaptations for IAR user added
+- Bosch C_CAN - error handling reworked
+- cpu linux replace signal() by sigaction() calls
+
+
+4.4.36						2009-03-23
+Driver:
+- Fujitsu MB91F467 driver added
+
+4.4.35						2009-02-25
+Driver:
+- QNX driver function deInitCan() added
+- CPC Windows - Multiline version corrected
+              - Output to the Debug Port of Windows only is selected
+                (by default deactivated)
+- AT91SAM7A3 - Readme - Errata information added
+- AVR - example-printf for strings in program flash
+- C8051F040 - Readme - information added
+- generic - Redundancy mode implemented
+- LPC2129 - derivate differences (step0/step1)
+- PIC18F - workaround for PIC18F6680 Errata 10 added
+
+4.4.34						2008-11-21
+Driver:
+- QNX driver interface added
+
+4.4.33						2008-11-13
+Driver:
+- hcs12 - redelivery older init_xxx.c file
+- TMS320F2808 - init of ECAN-B also in Singleline mode
+              - Update to CCS 3.3
+- TMS320F28335 - support added, CCS 3.3 used
+- SJA1000 - small update, no CAN functionality change
+
+4.4.32                                          2008-10-02
+Driver:
+- AT91SAM7X/AT91SAM7A3 - 29bit Identifiere support added
+
+4.4.31						2008-09-15
+Driver:
+- linux 64bit support improved
+- correct horch driver in multiline mode
+- correct can4linux driver call for select() at Multiline/Redundancy
+
+4.4.30						2008-08-18
+Driver:
+- ESD NTCAN for windows and linux updated (error handling)
+- use 64bit data declaration with gcc compiler (linux driver)
+- AVR bitrate 500k for 16MHz CAN clock corrected
+- XC164 Tasking adaptations, bitrate 500k for 40MHz clock corrected
+
+4.4.29						2008-07-25
+Drivers:
+- DP LPC2468 added
+- DP Kvaser CANlib on Kontron WinCE added
+- dsPIC30F - BUG: disable CPU Interrupt corrected
+- dsPIC30F/dsPIC33F  - new MPLAB C30 default: CO_CONST = const
+                     - MPLAB C30 - better default flag handling
+- CPC Win32 - wdk updated (wdk4.05)
+            - endloop() returns 'end of application' depend of the
+              Thread state (experimental part)
+- Fujitsu FX/C_CAN - 14MHz CAN-BTR table added
+- DP XE164 with Multiline and Redundancy for Keil Compiler

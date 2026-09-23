@@ -1,0 +1,77 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base-ninja",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../../build/application",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "inherits": "base-ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "inherits": "base-ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "rtt",
+      "displayName": "Debug RTT",
+      "inherits": "base-ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RTT"
+      }
+    },
+    {
+      "name": "itm",
+      "displayName": "Debug ITM",
+      "inherits": "base-ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "ITM"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-debug",
+      "displayName": "Build Debug",
+      "configurePreset": "debug",
+      "jobs": 8
+    },
+    {
+      "name": "build-release",
+      "displayName": "Build Release",
+      "configurePreset": "release",
+      "jobs": 8
+    },
+    {
+      "name": "build-rtt",
+      "displayName": "Build RTT",
+      "configurePreset": "rtt",
+      "jobs": 8
+    },
+    {
+      "name": "build-itm",
+      "displayName": "Build ITM",
+      "configurePreset": "itm",
+      "jobs": 8
+    }
+  ]
+}

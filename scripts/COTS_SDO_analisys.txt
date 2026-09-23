@@ -1,0 +1,100 @@
+[SDO_ERROR_CHECK]
+*debug
+macro THIS_FILE DEFINES
+:write:sdo:file nodeid 0x1F50 1 ..\__build\application\application.bin
+macro THIS_FILE CHECK_SDO_RESULT
+macro THIS_FILE UNDEFINES
+[END]
+
+//############################# scripts ############################################
+[DEFINES]
+//Variables related to SDO
+:define:var SDOSpecifier U8 0
+:define:var SDOIndex U16 0
+:define:var SDOSubindex U8 0
+:define:var SDOCode U32 0
+:define:can_msg txSDO 0x580 + nodeid 8
+:assign:vars2can_msg txSDO SDOSpecifier SDOIndex SDOSubindex SDOCode
+[END]
+
+// Un-Definitions
+[UNDEFINES]
+:delete:var SDOSpecifier
+:delete:var SDOIndex
+:delete:var SDOSubindex
+:delete:var SDOCode
+:delete:var bootBootUp
+:delete:can_msg txSDO
+:delete:can_msg bootUpNode
+[END]
+
+[PRINT_ERROR_CODE]
+do_if SDOCode == 0x06020000?
+    :print:string Object does not exist in the Object Dictionary (0x06020000)
+do_elsif SDOCode == 0x05030000?
+	:print:string Toggle bit not alternated (0x05030000)
+do_elsif SDOCode == 05040000?
+	:print:string SDO Protocol timed out (0x05040000)
+do_elsif SDOCode == 05040001?
+	:print:string Client/Server command specifier not valid or unknown (0x05040001)
+do_elsif SDOCode == 05040002?
+	:print:string Invalid block size (block mode) (0x05040002)
+do_elsif SDOCode == 05040003?
+	:print:string Invalid sequence number (block mode) (0x05040003)
+do_elsif SDOCode == 0x05040004?
+	:print:string CRC error (block mode) (0x05040004)
+do_elsif SDOCode == 0x05040005?
+	:print:string Out of memory (0x05040005)
+do_elsif SDOCode == 0x06010000?
+	:print:string Unsupported access to an object (0x06010000)
+do_elsif SDOCode == 0x06010001?
+	:print:string Attempt to read a write-only object (0x06010001)
+do_elsif SDOCode == 0x06010002?
+	:print:string Attempt to write a read-only object (0x06010002)
+do_elsif SDOCode == 0x06040041?
+	:print:string Object cannot be mapped to the PDO (0x06040041)
+do_elsif SDOCode == 0x06040042?
+	:print:string The number and length of the objects to be mapped would exceed PDO length (0x06040042)
+do_elsif SDOCode == 0x06040043?
+	:print:string General parameter incompatibility (0x06040043)
+do_elsif SDOCode == 0x06040047?
+	:print:string General internal incompatibility in the device (0x06040047)
+do_elsif SDOCode == 0x06060000?
+	:print:string  Access failed due to a hardware error (0x06060000)
+do_elsif SDOCode == 0x06070010?
+	:print:string Data type does not match. Length of service parameter does not match. (0x06070010)
+do_elsif SDOCode == 0x06070012?
+	:print:string Data type does not match. Length of service parameter is too high. (0x06070012)
+do_elsif SDOCode == 0x06070013?
+	:print:string Data type does not match. Length of service parameter is too low. (0x06070013)
+do_elsif SDOCode == 0x06090011?
+	:print:string Subindex does not exist (0x06090011)
+do_elsif SDOCode == 0x06090030?
+	:print:string Value range of parameter exceeded (write access only) (0x06090030)
+do_elsif SDOCode == 0x06090031?
+	:print:string Value of parameter written is too high (0x06090031)
+do_elsif SDOCode == 0x06090032?
+	:print:string Value of parameter written is too low (0x06090032)
+do_elsif SDOCode == 0x06090036?
+	:print:string Maximum value is less than the minimum value (0x06090036)
+do_elsif SDOCode == 0x08000000?
+	:print:string General error (0x08000000)
+do_elsif SDOCode == 0x08000021?
+	:print:string Data cannot be transferred or stored to the application because of local control (0x08000021)
+do_elsif SDOCode == 0x08000022?
+	:print:string Data cannot be transferred or stored to the application because of the present device state (0x08000022)
+do_elsif SDOCode == 0x08000023?
+	:print:string Object Dictionary dynamic generation failed or no Object Dictionary is present (0x08000023)
+do_else?
+    :print:string SDO abort error: Unknown code
+done_if
+[END]
+
+[CHECK_SDO_RESULT]
+:compute:var SDOSpecifier = SDOSpecifier & 0xE0?
+do_if SDOSpecifier == 0x80?
+    macro THIS_FILE PRINT_ERROR_CODE
+do_else?
+	:print:string Success
+done_if
+[END]

@@ -1,0 +1,501 @@
+//+++++++++++++++++++
+//Test Preparation: +
+//+++++++++++++++++++
+:scan:canbus?
+//#############################################################################################################################
+//help
+:help?
+
+//#############################################################################################################################
+//NMT commands
+//Enter PRE-OPERATIONAL
+:send:nmt 128 nodeid
+
+//Enter START
+:send:nmt 1 nodeid
+
+//Enter STOP
+:send:nmt 2 nodeid
+
+//Enter RESET Application
+:send:nmt 129 nodeid
+
+//Enter RESET Communication
+:send:nmt 130 nodeid
+
+//Calibrate accel
+:write:sdo nodeid 0x5302 1 1 1
+
+//Calibrate angle
+:write:sdo nodeid 0x5302 2 1 1
+
+[FILTER_SYNC]
+// Receive everything but Syncs
+filter on
+:filter_add:msg 0 0
+:filter_add:msg 0 1 0
+:filter_out:msg 0x80 1
+[END]
+
+[START_OPERATIONAL]
+// Filter out syncs
+macro THIS_FILE FILTER_SYNC
+// Enable syncs
+:read:set:auto_sync_tx 0x80 100?
+// Set node to Operational
+:send:nmt 1 nodeid
+[END]
+//#############################################################################################################################
+[UPDATE_APP]
+:write:sdo nodeid 0x1F51 1 0 1 // Run bootloader
+:wait:time 2000
+:read:sdo:string nodeid 0x100A 0?		// Software version
+:read:set:command_timeout 3000?
+:wait:time 2000
+:write:sdo:file nodeid 0x1F50 1 C:\Work\Repos\canopenio_stm32h7\__build\application\application.bin
+:wait:time 100
+:write:sdo nodeid 0x1F51 1 1 1 // Run application
+:wait:time 2000
+:read:sdo:string nodeid 0x100A 0?		// Software version
+[END]
+
+
+[WRITE_APP]
+:read:set:command_timeout 3000?
+:write:sdo:file nodeid 0x1F50 1 D:\Projects\canopenio_stm32h7\__build\application\application.bin
+:wait:time 100
+:write:sdo nodeid 0x1F51 1 1 1 // Run application
+[END]
+
+//#############################################################################################################################
+//Device Type
+:read:sdo nodeid 0x1000 0x0?			// Device Type
+
+// Asset Data
+:read:sdo:string nodeid 0x1008 0?		// Device name
+:read:sdo:string nodeid 0x1009 0?		// Hardware version
+:read:sdo:string nodeid 0x100A 0?		// Software version
+
+:read:sdo nodeid 0x1018 1?
+:read:sdo nodeid 0x1018 2?
+:read:sdo nodeid 0x1018 3?
+:read:sdo nodeid 0x1018 4?
+
+:write:sdo:string nodeid 0x2008 0 EASI-E  // write Device Name
+:write:sdo:string nodeid 0x2009 0 EXnnB   // write Hardware version
+
+:read:sdo:string nodeid 0x2008 0? // read Device Name
+:read:sdo:string nodeid 0x2009 0? // read Hardware version
+:read:sdo:string nodeid 0x200A 0? // read Software version
+
+
+//#############################################################################################################################
+// Update asset data
+// Set serial number
+:write:sdo nodeid 0x2018 4 1221 4
+
+:read:sdo nodeid 0x2018 4?
+
+// Set device name
+:write:sdo:string nodeid 0x2008 0 BB_LE_HW
+// Set HW version
+:write:sdo:string nodeid 0x2009 0 E1
+
+// Read CAN config code
+:read:sdo nodeid 0x2201 0?
+
+//#############################################################################################################################
+// Write heartbeat period
+:write:sdo nodeid 0x1017 0 1000 2
+:write:sdo nodeid 0x1017 0 2000 2
+
+//#############################################################################################################################
+// Read Manufacturer error register
+:read:sdo nodeid 0x1002 0?
+// Read Error Description
+:read:sdo nodeid 0x2200 1?
+:read:sdo nodeid 0x2200 2?
+
+//#############################################################################################################################
+
+//Request on save ALL parameters (save=0x65766173)
+:write:sdo nodeid 0x1010 1 0x65766173 4
+//Request on save COMMUNICATION parameters (save=0x65766173)
+:write:sdo nodeid 0x1010 2 0x65766173 4
+//Request on save APPLICATION parameters (save=0x65766173)
+:write:sdo nodeid 0x1010 3 0x65766173 4
+//Request on save Asset Data parameters (save=0x65766173)
+:write:sdo nodeid 0x1010 4 0x65766173 4
+
+
+//Request on RESTORE ALL DEFAULT parameters (load=0x64616F6C)
+:write:sdo nodeid 0x1011 1 0x64616F6C 4
+//Request on RESTORE DEFAULT COMMUNICATION parameters (load=0x64616F6C)
+:write:sdo nodeid 0x1011 2 0x64616F6C 4
+//Request on RESTORE DEFAULT APPLICATION parameters (load=0x64616F6C)
+:write:sdo nodeid 0x1011 3 0x64616F6C 4
+//Request on RESTORE Asset Data parameters (load=0x64616F6C)
+:write:sdo nodeid 0x1011 4 0x64616F6C 4
+
+//#############################################################################################################################
+
+:read:sdo nodeid 0x2000 1?
+:read:sdo nodeid 0x2000 2?
+:read:sdo nodeid 0x2000 3?
+:read:sdo nodeid 0x2000 4?
+
+[READ_DEBUG]
+:write:sdo nodeid 0x2000 1 1 4
+:wait:time 500
+:define:var i U16 2
+do_while i < 11?
+:read:sdo nodeid 0x2000 i?
+:compute:var i = i + 1?
+done_while
+[END]
+
+//#############################################################################################################################
+
+// Write application
+:write:sdo:file nodeid 0x1F50 1 ..\__build\application\application.bin
+
+// Run application
+:write:sdo nodeid 0x1F51 1 1 1
+// Run bootloader
+:write:sdo nodeid 0x1F51 1 0 1
+
+
+[UPDATE_APP]
+:read:set:command_timeout 3000?
+:define:var bootUp U8 0xFF
+:define:can_msg msgBootUp 0x700 + nodeid 1
+:assign:vars2can_msg msgBootUp bootUp
+:write:sdo nodeid 0x1F51 1 0 1 // Run bootloader
+:read:set:var bootUp 0xFF?
+:wait4var bootUp = 0 10000
+:write:sdo:file nodeid 0x1F50 1 ..\__build\application\application.bin
+:wait:time 100
+:write:sdo nodeid 0x1F51 1 1 1 // Run application
+:delete:can_msg msgBootUp
+[END]
+
+[WRITE_APP]
+:read:set:command_timeout 3000?
+:write:sdo:file nodeid 0x1F50 1 ..\__build\application\application.bin
+:wait:time 100
+:write:sdo nodeid 0x1F51 1 1 1 // Run application
+[END]
+
+//#############################################################################################################################
+// AIN subsystem
+
+//Analog inputs (filtered)
+:read:sdo nodeid 0x6401 1 ?
+:read:sdo nodeid 0x6401 2 ?
+:read:sdo nodeid 0x6401 3 ?
+:read:sdo nodeid 0x6401 4 ?
+:read:sdo nodeid 0x6401 5 ?		// TEMP-FD-ADC
+:read:sdo nodeid 0x6401 6 ?		// TEMP-MB-ADC
+:read:sdo nodeid 0x6401 7 ?
+:read:sdo nodeid 0x6401 8 ?
+:read:sdo nodeid 0x6401 9 ?
+:read:sdo nodeid 0x6401 10 ?
+:read:sdo nodeid 0x6401 11 ?
+:read:sdo nodeid 0x6401 12 ?
+:read:sdo nodeid 0x6401 13 ?
+:read:sdo nodeid 0x6401 14 ?	// Pump current in milliamps
+:read:sdo nodeid 0x6401 15 ?	// TEMP-FD-ADC in Celcius
+:read:sdo nodeid 0x6401 16 ?	// TEMP-MB-ADC in Celcius
+:read:sdo nodeid 0x6401 17 ?	//for test 2.2V
+:read:sdo nodeid 0x6401 18 ?    //for test 2.5V
+
+// Set prescaling
+:write:sdo nodeid 0x6432 4 1 4
+
+// Enable AI interrupts
+:write:sdo nodeid 0x6423 0 1 1
+
+[READ_DELTA]
+:read:sdo nodeid 0x6426 1?
+:read:sdo nodeid 0x6426 2?
+:read:sdo nodeid 0x6426 3?
+:read:sdo nodeid 0x6426 4?
+:read:sdo nodeid 0x6426 5?
+:read:sdo nodeid 0x6426 6?
+:read:sdo nodeid 0x6426 7?
+:read:sdo nodeid 0x6426 8?
+:read:sdo nodeid 0x6426 9?
+:read:sdo nodeid 0x6426 10?
+:read:sdo nodeid 0x6426 11?
+:read:sdo nodeid 0x6426 12?
+:read:sdo nodeid 0x6426 13?
+:read:sdo nodeid 0x6426 14?
+:read:sdo nodeid 0x6426 15?
+:read:sdo nodeid 0x6426 16?
+:read:sdo nodeid 0x6426 17?
+:read:sdo nodeid 0x6426 18?
+:read:sdo nodeid 0x6426 19?
+[END]
+
+:write:sdo nodeid 0x6426 11 0x100 4
+
+[READ_ACCEL]
+:define:var i U8 0
+do_while i < 10?
+:read:sdo nodeid 0x6401 8 ?
+:read:sdo nodeid 0x6401 9 ?
+:read:sdo nodeid 0x6401 10 ?
+:read:sdo nodeid 0x6401 11 ?
+:read:sdo nodeid 0x6401 12 ?
+:read:sdo nodeid 0x6401 13 ?
+:wait:time 1000
+done_while
+[END]
+
+//#############################################################################################################################
+// AOUT subsystem
+
+[SEND_PDO_DOUT]
+:define:var digOUT1 U16 3300//
+:define:can_msg RPDO1 0x280 + nodeid 4
+:assign:vars2can_msg RPDO1 digOUT1
+:send:nmt 1 nodeid
+:send:can_msg RPDO1
+:delete:can_msg RPDO1
+[END]
+//#############################################################################################################################
+// DIN subsystem
+
+// Read DI values
+[READ_ALL]
+:read:sdo nodeid 0x6000 1?
+:read:sdo nodeid 0x6000 2?
+:read:sdo nodeid 0x6000 3?
+:read:sdo nodeid 0x6000 4?
+:read:sdo nodeid 0x6000 5?
+[END]
+
+// Write polarity
+:write:sdo nodeid 0x6002 1 0x02 1
+:write:sdo nodeid 0x6002 2 0x01 1
+
+// Write Interrupt Any change
+:write:sdo nodeid 0x6006 1 0x00 1
+:write:sdo nodeid 0x6006 1 0xFF 1
+
+// Write Interrupt rising
+:write:sdo nodeid 0x6007 1 0x00 1
+:write:sdo nodeid 0x6007 1 0xFF 1
+
+// Write Interrupt falling
+:write:sdo nodeid 0x6008 1 0x00 1
+:write:sdo nodeid 0x6008 1 0xFF 1
+
+// Apply mask
+:write:sdo nodeid 0x5002 4 0x04 1
+// Apply value
+:write:sdo nodeid 0x5001 4 0x04 1
+:write:sdo nodeid 0x5001 4 0x00 1
+
+//#############################################################################################################################
+
+// DOUT subsystem
+
+// Set DO values
+:write:sdo nodeid 0x6200 1 0x1F 1
+:write:sdo nodeid 0x6200 1 0x00 1
+
+:write:sdo nodeid 0x6200 4 0x00 1
+
+:read:sdo nodeid 0x6200 1?
+:read:sdo nodeid 0x6200 2?
+:read:sdo nodeid 0x6200 3?
+:read:sdo nodeid 0x6200 4?
+
+// Set filter mask
+:write:sdo nodeid 0x6208 1 0xFF 1
+:write:sdo nodeid 0x6208 1 0x55 1
+:write:sdo nodeid 0x6208 1 0x00 1
+
+// Set polarity
+:write:sdo nodeid 0x6202 1 0xFF 1
+:write:sdo nodeid 0x6202 1 0x55 1
+:write:sdo nodeid 0x6202 1 0x00 1
+
+[SEND_PDO1_DOUT]
+:define:var digOUT1 U8 0x00
+:define:var digOUT2 U8 0x00
+:define:var digOUT3 U8 0x00
+:define:var digOUT4 U8 0x00
+// Assign variables to CANOpen objects 
+// to be able to read them with SDO
+:assign:object2var digOUT1 0x6200 1
+:assign:object2var digOUT2 0x6200 2
+:assign:object2var digOUT3 0x6200 3
+:assign:object2var digOUT4 0x6200 4
+// Define RPDO
+:define:can_msg RPDO1 0x200 + nodeid 4
+:assign:vars2can_msg RPDO1 digOUT1 digOUT2 digOUT3 digOUT4
+:send:nmt 1 nodeid
+// Read current values
+:read:var_sdo digOUT1?
+:read:var_sdo digOUT2?
+:read:var_sdo digOUT3?
+:read:var_sdo digOUT4?
+// Modify values
+//:compute:var digOUT4 = digOUT4 | 0x01?
+:compute:var digOUT4 = digOUT4 & 0xFE?
+:send:can_msg RPDO1
+:delete:can_msg RPDO1
+[END]
+ 
+//#############################################################################################################################
+
+//PWM modulation
+
+//PWM state(start or stop modulation)
+:write:sdo nodeid 0x5401 1 1 1
+:write:sdo nodeid 0x5401 1 0 1
+:read:sdo nodeid 0x5401 1?
+:write:sdo nodeid 0x5401 2 1 1
+:write:sdo nodeid 0x5401 2 0 1
+
+//PWM set duty cycle(from 0 to 100)
+:write:sdo nodeid 0x5403 1 0 1
+:write:sdo nodeid 0x5403 1 10 1
+:write:sdo nodeid 0x5403 1 50 1
+:write:sdo nodeid 0x5403 1 75 1
+:write:sdo nodeid 0x5403 1 90 1
+:write:sdo nodeid 0x5403 1 100 1
+:read:sdo nodeid 0x5403 1?
+
+//PWM set carrier frequency
+:write:sdo nodeid 0x5402 0 10000 4
+:write:sdo nodeid 0x5402 0 20000 4
+:write:sdo nodeid 0x5402 0 50000 4
+:read:sdo nodeid 0x5402 0?
+//#############################################################################################################################
+// ISM330
+
+:send:nmt 1 nodeid
+
+:write:sdo nodeid 0x5200 1 0x0e 1
+:write:sdo nodeid 0x5200 2 0x01 1
+
+:write:sdo nodeid 0x5200 1 0x11 1
+:write:sdo nodeid 0x5200 2 0x24 1
+
+
+:write:sdo nodeid 0x5200 1 0x10 1
+:read:sdo nodeid 0x5200 2?
+
+// Read WHO_AM_I
+:write:sdo nodeid 0x5200 1 0x0f 1
+:read:sdo nodeid 0x5200 2?
+
+
+//#############################################################################################################################
+// Temperature sensor
+
+// Read temperature
+:read:sdo nodeid 0x6401 7 ?
+
+// Read config
+:read:sdo nodeid 0x5101 0?
+
+//Set config
+//Set fault queue to 2
+:write:sdo nodeid 0x5101 0 0x18 1
+//Set fault queue to 0
+:write:sdo nodeid 0x5101 0 0x00 1
+
+//Read limits
+// Read limit high
+:read:sdo nodeid 0x5102 1?
+// Read limit low
+:read:sdo nodeid 0x5102 2?
+
+// Set limit high
+:write:sdo nodeid 0x5102 1 30 2
+:write:sdo nodeid 0x5102 1 75 2
+:write:sdo nodeid 0x5102 1 80 2
+:write:sdo nodeid 0x5102 1 85 2
+:write:sdo nodeid 0x5102 1 95 2
+
+// Set limit low
+:write:sdo nodeid 0x5102 2 29 2
+:write:sdo nodeid 0x5102 2 65 2
+:write:sdo nodeid 0x5102 2 75 2
+
+//#############################################################################################################################
+[PDO_TEST]
+// Test result variable
+:define:var test_res U8 0
+// Define RPDO
+:define:var obj6200_1 U8 0
+:define:var obj6200_2 U8 0
+:define:var obj6200_3 U8 0
+:define:var obj6200_4 U8 0
+:define:can_msg RPDO1 0x200 + nodeid 4
+:assign:vars2can_msg RPDO1 obj6200_1 obj6200_2 obj6200_3 obj6200_4
+// Update variables
+:compute:var obj6200_1 = obj6200_1 | 0x1F?
+:compute:var obj6200_3 = obj6200_3 | 0x80?
+:compute:var obj6200_4 = obj6200_4 | 0x02?
+// Define TPDO
+:define:var obj6000_1 U8 0
+:define:var obj6000_2 U8 0
+:define:var obj6000_3 U8 0
+:define:var obj6000_4 U8 0
+:define:var obj6000_5 U8 0
+:define:can_msg TPDO1 0x180 + nodeid 5
+:assign:vars2can_msg TPDO1 obj6000_1 obj6000_2 obj6000_3 obj6000_4 obj6000_5
+// Send PDO
+:send:can_msg RPDO1
+:wait:time 40
+// Analyze output
+:compute:var obj6000_1 = obj6000_1 & 0x7c?
+:compute:var obj6000_5 = obj6000_5 & 0xef?
+:compute:var obj6000_3 = obj6000_3 & 0x02?
+do_if expr obj6000_1 != 0x7c?
+	:read:set:var test_res 1?
+done_if
+do_if expr obj6000_5 == 0?
+	:read:set:var test_res 1?
+done_if
+do_if expr obj6000_3 != 0?
+	:read:set:var test_res 1?
+done_if
+// Update variables
+:compute:var obj6200_1 = obj6200_1 & 0xE0?
+:compute:var obj6200_3 = obj6200_3 & 0x7F?
+:compute:var obj6200_4 = obj6200_4 & 0xFD?
+:send:can_msg RPDO1
+:wait:time 500
+// Analyze output
+:compute:var obj6000_1 = obj6000_1 & 0x7c?
+:compute:var obj6000_5 = obj6000_5 & 0x10?
+:compute:var obj6000_3 = obj6000_3 & 0xfd?
+do_if expr obj6000_1 != 0?
+	:read:set:var test_res 1?
+done_if
+do_if expr obj6000_5 != 0?
+	:read:set:var test_res 1?
+done_if
+do_if expr obj6000_3 == 0?
+	:read:set:var test_res 1?
+done_if
+:print:var test_res
+do_if test_res == 0?
+	:print:string Test successful
+do_else?
+	:print:string Test failed
+done_if
+// Clean-up
+:delete:can_msg RPDO1
+:delete:can_msg TPDO1
+[END]
+//#############################################################################################################################
+
+
+

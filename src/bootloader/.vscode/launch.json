@@ -1,0 +1,154 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/../../build/bootloader/bootloader.hex",
+            "name": "Debug with JLink",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32H750XB",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "symbolFiles": [
+                "${workspaceFolder}/../../build/bootloader/bootloader.elf"
+            ]
+        },
+        {
+            "name": "Debug Microcontroller - STLink-V3",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/../../__build/application.hex",
+            "request": "launch",
+            "servertype": "stlink",
+            "device": "STM32H750XB",
+            "interface": "swd",
+            "serialNumber": "",
+            "runToEntryPoint": "main",
+            "svdFile": "${workspaceFolder}/../../src/common/STM32H750x.svd",
+            "v1": false,
+            "showDevDebugOutput": "both",
+            "symbolFiles": [
+                "${workspaceFolder}/../../__build/application.elf"
+            ]
+        },
+        {
+            "name": "OpenOCD Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/../../build/bootloader/bootloader.hex",
+            "configFiles": [
+                "${workspaceFolder}/../../scripts/openocd.cfg"
+            ],
+            "runToEntryPoint": "main",
+            "device": "STM32H750XB",
+            "svdFile": "${workspaceFolder}/../../src/common/STM32H750x.svd",
+            "symbolFiles": [
+                "${workspaceFolder}/../../build/bootloader/bootloader.elf"
+            ],
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 400000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "label": "ITM port 0 output",
+                        "type": "console",
+                        "port": 0,
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "JLink launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/../../build/bootloader/bootloader.hex",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "serverpath": "C:/Program Files/SEGGER/JLink/JLinkGDBServerCL.exe",
+            "device": "STM32H750XB",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "svdFile": "${workspaceFolder}/../../src/common/STM32H750x.svd",
+            "symbolFiles": [
+                "${workspaceFolder}/../../build/bootloader/bootloader.elf"
+            ],
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 400000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "label": "ITM port 0 output",
+                        "type": "console",
+                        "port": 0,
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "JLink attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceRoot}/../../_build/application.hex",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "STM32H750XB",
+            "interface": "jtag",
+            "symbolFiles": [
+                "${workspaceFolder}/../../__build/application.elf"
+            ],
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 400000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "label": "ITM port 0 output",
+                        "type": "console",
+                        "port": 0,
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "C/C++: gcc.exe build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "C:\\msys64\\ucrt64\\bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: gcc.exe build active file"
+        }
+    ]
+}

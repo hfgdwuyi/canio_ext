@@ -1,0 +1,193 @@
+$Date: 2016/11/14 13:40:04 $
+$Author: jsc $
+
+Shared sources for CAN controller. 
+
+CAN driver modules
+------------------
+can_320.c	TI DSP internal CAN like TMS320F2407A
+can_80390.c	Dallas DS80C390
+can_82527.c	82527, C5x5, C164, C167
+can_90540.c	16bit Fujitsu like MB90F543
+can_am335x.c   TI sitara (ARM Cortex A8, internal DCAN)
+can_arcom.c	PC104 CAN board for Arcom WinCE
+can_at91.c	Atmel internal CAN like AT91SAM7A2
+can_at91sam7a3.c Atmel AT91SAM7A3 internal CAN
+can_at91sam7X.c  Atmel AT91SAM7X internal CAN
+can_at91sam9263.c Atmel AT91SAM9263 internal CAN
+can_atsam4e.c 	Atmel ATSAM4E internal CAN
+can_avr32.c	Atmel internal CAN (AVR32)
+can_bxcan.c	ST bxCAN (STM32F10x, STM32F2xx, STM32F4xx, STM32F3xx, STM32L4xx, STM32F7xx)
+can_bxcan_stm32f0.c	ST bxCAN specific for STM32F0xx
+can_bxcan_virtual_multiline.c	ST bxCAN specific STM3210x
+can_can4linux.c LINUX  based on can4linux device driver
+can_canary.c	Atmel CANary like T89C51CC01, AVR
+can_ccan.c	Bosch C_CAN (C8051F040)
+can_cpc.c	CPC driver (Multi Line)
+can_dcan.c	Bosch D_CAN (TI sitara am437x, TMS320F28377)
+can_dcan_tm4c.c  Bosch D_CAN (TI Tiva special variant)
+can_dcan_tms320.c  Bosch D_CAN (TI TMS320F28379)
+can_dcan_tms570.c  Bosch D_CAN (TI Hercules special variant)
+can_dcan_msp432x.c Bosch D_CAN (TI MSP432E4x variant like TI Tiva)
+can_dspic30f.c	MicroChip CAN dsPIC30F
+can_dspic33f.c	MicroChip CAN dsPIC33F
+can_dspic33epxx.c	MicroChip CAN dsPIC33EPxx
+can_dspic33evxx.c	MicroChip CAN dsPIC33EVxx
+can_ecan.c	eCAN like TMS320LF2812
+can_FCAN.c	NEC aFCAN PD70F3231
+can_fcn.c	renesas NECV850Fx4, V850E2/ML4 + R-IN32M3
+can_f28m35x.c   TI C2000 Concerto DCAN
+can_flexcan.c	Freescale FlexCAN
+can_flexcan_kinetis.c	Freescale FlexCAN for Kinetis cpu family
+can_flexcan_s32.c NXP FlexCAN for S32 family
+can_stm32_fdcan.c	ST STM32G4xx (FDCAN)
+can_generic.c	Generic CAN driver for new development
+can_hecc.c	TI HECC (High End CAN controller like TI eCAN)
+can_horch.c	horch interface
+can_ipc143.c	Beck IPC
+can_ixxat_vci.c  IXXAT PC interface windows
+can_jpcan.c	Janz CAN-USB Interface (only m4d)
+can_lpc21.c	NXP LPC2000 internal CAN (LPC1700, LPC4000, LPC2100, LPC2300, LPC2400)
+can_m16c.c	Renesas M16C
+can_mcp2517fd.c Microchip extended CAN controller MCP2517FD
+can_mscan.c	Freescale msCAN8, msCAN12, msCAN12 Rev2 (e.d. HC908GZ60, HCS12, DSP 5680x, Kinetis KE06) 
+can_multican.c	Infineon MultiCAN base on XE164
+can_multican_aurix.c	Infineon MultiCAN+ base on Aurix TC23x
+can_multican_xmc4500.c	Infineon MultiCAN base on XMC4500
+can_multican_xmc4800.c	Infineon MultiCAN base on XMC4800
+can_multican_xmc4200.c	Infineon MultiCAN base on XMC4200
+can_multican_xmc4300.c	Infineon MultiCAN base on XMC4300
+can_pic32mx.c	Microchip PIC32 CAN
+can_pic_ecan.c	MicroChip CAN PIC18F 
+can_rcan_sh72544r.c	Renesas SH72544R
+can_rl78f13.c   Renesas RL78F13
+can_rl78f14.c   Renesas RL78F14
+can_rscan.c     Renesas RSCAN
+can_rscan_rh850.c  Renesas RSCAN base on RH850
+can_rscan_rzt1.c   Renesas RSCAN base on RZ/T1
+can_rx63n.c     renesas rx63n
+can_rx62n.c     renesas rx62n
+can_rx64m.c     renesas rx64m
+can_rx65n.c     renesas rx65n
+can_rx71m.c     renesas rx71m
+can_rx72m.c     renesas rx72m
+can_sie.c	Sontheim Industrieelektronik CANFox (u.a.) (nur m4d)
+can_sja1000.c	SJA1000 Pelican mode
+can_socketcan	LINUX based SocketCAN device driver
+can_synergy.c   Renesas synergy CAN interface
+can_tinycan.c	MHS TinyCAN IV (only m4d)
+can_toucan.c	Freescale TouCAN
+can_twincan.c	Infineon Twincan base on XC164
+can_vector.c    Vector XL Driver Library
+can_vxworks.c	VxWorks based on device driver
+can_xilinx_xcan.c  Xilinx XCAN
+can_xzync_qnx.c  Xilinx XZYNC with QNX Posix interface
+
+reduncy.c	additional functions for redundancy support
+
+cpu driver modules
+------------------
+cpu_166.c	common C166 functions
+cpu_320.c	common TMS320 cpu functions
+cpu_56800.c	common DSP 56800 functions
+cpu_56f8300.c	common DSP 56F8300 functions
+cpu_mc56f827.c	common freescale MC56f827xx functions
+cpu_8051.c	common 8051 functions
+cpu_90540.c	common Fujitsu F2MC16LX cpu functions
+cpu_9146x.c	common Fujitsu FR60 cpu functions
+cpu_96340.c	common Fujitsu F2MC16FX cpu functions
+cpu_mb9b524k.c	common Fujitsu MB9B524K cpu functions
+cpu_mb9bf51x.c	common Fujitsu/Spansion MB9BF51x functions
+cpu_at91sam7a3.c common AT91SAM7A3 functions
+cpu_at91sam7x.c common AT91SAM7X functions
+cpu_at91sam9263.c common AT91SAM9263 functions
+cpu_atsam4e.c common ATSAM4E functions
+cpu_atsam4e_uCOSII.c common ATSAM4E functions with uCOSII support
+cpu_atsam4e_freertos.c common ATSAM4E functions with FreeRTOS support
+cpu_aurix.c common infineon Aurix TC23x functions
+cpu_avr32.c	common Atmel AT32UC3C functions
+cpu_avr.c	common AVR cpu functions
+cpu_dspic30f.c	common dsPIC30F cpu functions
+cpu_dspic33f.c	common dsPIC33F cpu functions
+cpu_dspic33epxx.c	common dsPIC33EPxx cpu functions
+cpu_dspic33evxx.c	common dsPIC33EVxx cpu functions
+cpu_embos.c	common embOS functions
+cpu_f28m35x.h   common TI C2000 Concerto
+cpu_hc08.c	common HC08 cpu functions
+cpu_hcs12.c	common HCS12 cpu functions
+cpu_ipc143.c	common Beck IPC functions
+cpu_kinetis_k2x.c  common K2x cpu functions
+cpu_kinetis.c  common Kinetis cpu functions
+cpu_kinetis_uCOSII.c  common Kinetis cpu functions with uCOSII support
+cpu_linux.c	common LINUX based systems functions
+cpu_lpc17.c	common NXP LPC1700 functions
+cpu_lpc15.c	common NXP LPC1500 functions
+cpu_lpc21.c	common NXP LPC2100/LPC2200 functions
+cpu_lpc40xx.c	common NXP LPC40xx functions
+cpu_lpc23.c	common NXP LPC2300 functions
+cpu_lpc24.c	common NXP LPC2400 functions
+cpu_m16c.c	common Renesas M16C functions
+cpu_mc9s08.c	common Freescale MC9S08 functions
+cpu_mpc5xx.c	common MPC500 cpu functions
+cpu_msp432x_freertos.c  common MSP432E4x cpu functions
+cpu_pic18f.c	common PIC18F cpu functions
+cpu_pic32mx.c   common Microchip PIC32 functions
+cpu_sh72544r.c	common Renesas SH72544R functions
+cpu_rh850.c     common RH850 functions
+cpu_rzt1_r4f.c  common RZ/T1 R4F functions
+cpu_rl78f13.c   common Renesas RL78F13 functions
+cpu_rl78f14.c   common Renesas RL78F14 functions   
+cpu_rx63n.c     common renesas rx63n functions
+cpu_rx62n.c     common renesas rx62n functions
+cpu_rx64m.c     common renesas rx64m functions
+cpu_rx65n_freertos.c  common Renesas rx65n with FreeRTOS functions
+cpu_rx71m.c     common renesas rx71m functions
+cpu_rx72m.c     common renesas rx72m functions
+cpu_rx231.c     common renesas rx231 functions
+cpu_rin32m3.c     common renesas rin32m3 functions
+cpu_stm32.c	common ST STM32F10x functions
+cpu_stm32_f2.c	common ST STM32F2xx functions
+cpu_stm32_f4.c	common ST STM32F4xx functions
+cpu_stm32_f0.c	common ST STM32F0xx functions
+cpu_stm32_f3.c	common ST STM32F3xx functions
+cpu_stm32_f7.c	common ST STM32F7xx functions
+cpu_stm32_g4.c	common ST STM32G4xx functions
+cpu_stm32_h7.c	common ST STM32H7xx functions
+cpu_stm32_freertos.c  common ST STM32 with FreeRTOS functions
+cpu_stm32_threadx.c  common ST STM32 with ThreadX functions
+cpu_stm32_keil_rtx.c  common ST STM32 with Keil RTX functions
+cpu_tm4c_freertos.c  common TI Tiva with FreeRTOS functions
+cpu_tm4c.c           common TI Tiva (Bare-Metal)
+cpu_tms570.c	common TI Hercules functions
+cpu_s32.c 		common S32K144 functions
+cpu_s12z.c 		common NXP S12Z functions
+cpu_str911.c	common STR911 functions
+cpu_sysbios.c  common TI sysbios functions
+cpu_synergy.c   Renesas synergy plattform
+cpu_v850e2fx4.c common NECV850Fx4 functions
+cpu_v850e2ml4.c	common Renesas V850E2/ML4 functions
+cpu_v850es.c	common V850ES cpu functions
+cpu_vxworks.c	common VxWorks based systems functions
+cpu_win.c	common WIN32 based systems functions
+cpu_wince.c	common WinCE functions
+cpu_xe166.c	common XE166 functions
+cpu_xmc4500.c common infineon XMC4500 functions
+cpu_xmc4800.c common infineon XMC4800 functions
+cpu_xmc4200.c common infineon XMC4200 functions
+cpu_xmc4300.c common infineon XMC4300 functions
+cpu_xilinx_zync7000.c common xilinx zync7000 functions
+
+cpu_generic.c	generic cpu functions
+
+hardware independent Timer Functionality
+----------------------------------------
+cpu_common.c	function to call from customer periodic interrupt
+
+other
+-----
+can_busload.c	busload measurement
+canprint.c	printf() over CAN
+canputs.c	debug messages over CAN
+cdriver.c	hardware independent CAN driver part
+debug_flushmbox.c FlushMbox for RX-Stresstest
+m4d_drv.c	special functions for m4d

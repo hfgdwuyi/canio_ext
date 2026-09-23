@@ -1,0 +1,473 @@
+
+bootloader Documentation
+- 04-23-2026 - 05:03PM -
+
+
+CANopen device using port's CANopen library
+
+- - - - - - - - Object Description - - - - - - - - - -
+-------------------------------------------------------
+
+============ Line 0 ============
+
+Summary of line 0:
+---------------------------------------------------------------------------
+1000	Device Type
+1001	Error Register
+1002	Manufacturer Status Register
+1008	Manufacturer Device Name
+1009	Manufacturer Hardware Version
+100A	Manufacturer Software Version
+1010	Store Parameter Field
+1011	Restore Default Parameters
+1014	COB-ID EMCY
+1015	Inhibit Time Emergency
+1017	Producer Heartbeat Time
+1018	Identity Object
+1200	Server SDO Parameter 1
+1F50	Download Program Data
+1F51	Program Control
+2008	Manufacturer Device Name Setup
+2009	Manufacturer HW Version Setup
+2018	Identity Object Setup
+2100	CAN Configuration
+2101	Node IDs Table
+2102	Baudrates Table
+2200	Manufacturer Error Description
+
+
+Communication Segment
+
+
+Variable - 1000 - Device Type:
+---------------------------------------------------------------------------
+The device type specifies the kind of device.
+The lower 16 bit contain the device profile number and
+the upper 16 bit an additional information.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x70191    0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1001 - Error Register:
+---------------------------------------------------------------------------
+The error register is a field of 8 bits, each for a certain error type. If an error occurs the bit has to be set.
+
+    Bit Meaning
+    0  generic error
+    1  current
+    2  voltage
+    3  temperature
+    4  communication error (overrun, error state)
+    5  device profile specific
+    6  reserved
+    7  manufacturer specific
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+
+
+Variable - 1002 - Manufacturer Status Register:
+---------------------------------------------------------------------------
+This object is a common status register for 
+    manufacturer specific purposes.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1008 - Manufacturer Device Name:
+---------------------------------------------------------------------------
+Contains the device name.
+Value      Min         Max         Unit	Type	Access	Mapping
+STM32H750B-DK                    	vstr	CONST	0
+
+
+
+Variable - 1009 - Manufacturer Hardware Version:
+---------------------------------------------------------------------------
+Contains the device hardware version.
+Value      Min         Max         Unit	Type	Access	Mapping
+B02                              	vstr	CONST	0
+
+
+
+Variable - 100A - Manufacturer Software Version:
+---------------------------------------------------------------------------
+Contains the device software version.
+Value      Min         Max         Unit	Type	Access	Mapping
+0.0.1 Bootloader                 	vstr	CONST	0
+
+
+
+Array - 1010 - Store Parameter Field:
+---------------------------------------------------------------------------
+This entry supports saving of parameters in non volatile memory.
+    With a read access the device provides information about
+    its saving capabilities. Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For saving the signature "save" (0x65766173) must be written.
+    The CANopen Library by port contains an extensions for clear ("kill").
+1010:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0x7F       	u8	CONST	0
+
+1010:001 Save all Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:002 Save Communication Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:003 Save Application Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1010:004 Save Asset Data
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Array - 1011 - Restore Default Parameters:
+---------------------------------------------------------------------------
+This entry supports restoring of default para- meters.
+    With a read access the device provides information about
+    its capabilities to restore these values.
+    Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For restoring the signature "load" (0x64616f6c) must be written.
+1011:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0x7F       	u8	CONST	0
+
+1011:001 Restore all Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:002 Restore Communication Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:003 Restore Application Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+1011:004 Restore Asset Data Default Parameters
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 1014 - COB-ID EMCY:
+---------------------------------------------------------------------------
+COB-ID used for emergency message (Emergency Producer).
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80       0x80       0xBFFFFFFF 	u32	RO	0
+
+
+
+Variable - 1015 - Inhibit Time Emergency:
+---------------------------------------------------------------------------
+Inhibit Time used for emergency message (Emergency Producer). The time has to be a multiple of 100 us.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     100 us	u16	RW	0
+
+
+
+Variable - 1017 - Producer Heartbeat Time:
+---------------------------------------------------------------------------
+The producer heartbeat time defines the cycle time of the heartbeat.
+If the time is 0 it is not used. The time has to be a multiple of 1 ms.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x3E8      0x0        0xFFFF     ms	u16	RW	0
+
+
+
+Record - 1018 - Identity Object:
+---------------------------------------------------------------------------
+This object contains general information about the
+    device.
+    Sub-Index 1 contains a unique value allocated each manufacturer.
+    Sub-Index 2 identifies the manufacturer specific product code (device version).
+    Sub-Index 3 contains the revision number.
+    Bit 31-16 is the major revision number and Bit 15-0 the minor revision number.
+    Sub-Index 4 identifies a manufacturer specific serial number.
+1018:000 number of entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x1        0x4        	u8	RO	0
+
+1018:001 Vendor Id
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x500053   0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:002 Product Code
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:003 Revision number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+1018:004 Serial number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+Record - 1200 - Server SDO Parameter 1:
+---------------------------------------------------------------------------
+The object contains the parameters for the SDOs for which
+the device is the server.
+1200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x2        0x2        0x2        	u8	RO	0
+
+1200:001 COB-ID Client -> Server
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x600      0x600      0xBFFFFFFF 	u32	RO	0
+
+1200:002 COB-ID Server -> Client
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x580      0x580      0xBFFFFFFF 	u32	RO	0
+
+
+
+Array - 1F50 - Download Program Data:
+---------------------------------------------------------------------------
+This object shall be used for program download to the CANopen device. Each program is assigned to a sub-index.
+1F50:000 Highest Sub-index Supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x1        0xFE       	u8	CONST	0
+
+1F50:001 Program Area 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+NULL                             	dom	RW	0
+
+
+
+Array - 1F51 - Program Control:
+---------------------------------------------------------------------------
+This array controls the programs residing at index 0x1F50. The sub-Index 0 contains the number of program control entries. All further sub-indices control the programs. They can have the following values:
+
+for writing:
+0 - stop program
+1 - start program
+2-  reset program
+3-  clear program
+
+for reading:
+0 - program stopped
+1 - program running
+2 - program stopped
+3 - no program available
+
+0x80..0xFF manufacturer-specific
+1F51:000 Highest Sub-index Supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1        0x1        0xFF       	u8	CONST	0
+
+1F51:001 Program Number 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RW	0
+
+
+Manufacturer Segment
+
+
+Variable - 2008 - Manufacturer Device Name Setup:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+STM32H750B-DK                    	vstr	RW	0
+
+
+
+Variable - 2009 - Manufacturer HW Version Setup:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+B02                              	vstr	RW	0
+
+
+
+Record - 2018 - Identity Object Setup:
+---------------------------------------------------------------------------
+
+2018:000 numOfEntries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x1        0x4        	u8	RO	0
+
+2018:001 vendorId
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x500053   0x0        0xFFFFFFFF 	u32	RO	0
+
+2018:002 productCode
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2018:003 revisionNumber
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+2018:004 serialNumber
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RW	0
+
+
+
+Variable - 2100 - CAN Configuration:
+---------------------------------------------------------------------------
+CAN configuration code read from dedicated pins
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFF       	u8	RO	0
+
+
+
+Array - 2101 - Node IDs Table:
+---------------------------------------------------------------------------
+
+2101:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2101:001 Node ID 0 
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0xFF       	u8	RW	0
+
+2101:002 Node ID 1 
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0xFF       	u8	RW	0
+
+2101:003 Node ID 2 
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0xFF       	u8	RW	0
+
+2101:004 Node ID 3 
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x30       0x0        0xFF       	u8	RW	0
+
+
+
+Array - 2102 - Baudrates Table:
+---------------------------------------------------------------------------
+
+2102:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2102:001 Baudrate 0
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0xFFFF     	u16	RW	0
+
+2102:002 Baudrate 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0xFFFF     	u16	RW	0
+
+2102:003 Baudrate 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0xFFFF     	u16	RW	0
+
+2102:004 Baudrate 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1F4      0x0        0xFFFF     	u16	RW	0
+
+
+
+Array - 2200 - Manufacturer Error Description:
+---------------------------------------------------------------------------
+Subindex 1: CANOpen errors
+bit 0 - Pasisive Error
+bit 1 - Bus Off
+bit 2 - Overflow
+bit 3 - TX Overflow
+bit 4 - RX Overflow
+2200:000 Highest sub-index supported
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x0        0xFF       	u8	CONST	0
+
+2200:001 CANOpen Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:002 Storage Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:003 HW Init Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+2200:004 Application Error Description
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	0
+
+
+
+-- Abbreviations --
+
+
+
+u8		UNSIGNED8
+u16		UNSIGNED16
+u32		UNSIGNED32
+vstr		VISIBLE_STRING
+dom		DOMAIN
+
+
+
+
+This document was created using Industrial Communication Creator 7.0.0.202112202107 by port GmbH

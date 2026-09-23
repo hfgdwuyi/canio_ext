@@ -1,0 +1,170 @@
+1000:
+Device Type
+
+
+The device type specifies the kind of device.
+The lower 16 bit contain the device profile number and
+the upper 16 bit an additional information.
+1001:
+Error Register
+
+
+The error register is a field of 8 bits, each for a certain error type. If an error occurs the bit has to be set.
+
+    Bit Meaning
+    0  generic error
+    1  current
+    2  voltage
+    3  temperature
+    4  communication error (overrun, error state)
+    5  device profile specific
+    6  reserved
+    7  manufacturer specific
+1002:
+Manufacturer Status Register
+
+
+This object is a common status register for 
+    manufacturer specific purposes.
+1008:
+Manufacturer Device Name
+
+
+Contains the device name.
+1009:
+Manufacturer Hardware Version
+
+
+Contains the device hardware version.
+100A:
+Manufacturer Software Version
+
+
+Contains the device software version.
+1010:
+Store Parameter Field
+
+
+This entry supports saving of parameters in non volatile memory.
+    With a read access the device provides information about
+    its saving capabilities. Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For saving the signature "save" (0x65766173) must be written.
+    The CANopen Library by port contains an extensions for clear ("kill").
+1011:
+Restore Default Parameters
+
+
+This entry supports restoring of default para- meters.
+    With a read access the device provides information about
+    its capabilities to restore these values.
+    Several parameter groups are distinguished.
+
+    Sub index 1      : all parameters
+    Sub index 2      : communication parameters
+    Sub index 3      : application parameters
+    Sub index 4 - 127: manufacturer defined parameters
+
+    For restoring the signature "load" (0x64616f6c) must be written.
+1014:
+COB-ID EMCY
+
+
+COB-ID used for emergency message (Emergency Producer).
+1015:
+Inhibit Time Emergency
+
+
+Inhibit Time used for emergency message (Emergency Producer). The time has to be a multiple of 100 us.
+1017:
+Producer Heartbeat Time
+
+
+The producer heartbeat time defines the cycle time of the heartbeat.
+If the time is 0 it is not used. The time has to be a multiple of 1 ms.
+1018:
+Identity Object
+
+
+This object contains general information about the
+    device.
+    Sub-Index 1 contains a unique value allocated each manufacturer.
+    Sub-Index 2 identifies the manufacturer specific product code (device version).
+    Sub-Index 3 contains the revision number.
+    Bit 31-16 is the major revision number and Bit 15-0 the minor revision number.
+    Sub-Index 4 identifies a manufacturer specific serial number.
+1200:
+Server SDO Parameter 1
+
+
+The object contains the parameters for the SDOs for which
+the device is the server.
+1F50:
+Download Program Data
+
+
+This object shall be used for program download to the CANopen device. Each program is assigned to a sub-index.
+1F51:
+Program Control
+
+
+This array controls the programs residing at index 0x1F50. The sub-Index 0 contains the number of program control entries. All further sub-indices control the programs. They can have the following values:
+
+for writing:
+0 - stop program
+1 - start program
+2-  reset program
+3-  clear program
+
+for reading:
+0 - program stopped
+1 - program running
+2 - program stopped
+3 - no program available
+
+0x80..0xFF manufacturer-specific
+2008:
+Manufacturer Device Name Setup
+
+
+
+2009:
+Manufacturer HW Version Setup
+
+
+
+2018:
+Identity Object Setup
+
+
+
+2100:
+CAN Configuration
+
+
+CAN configuration code read from dedicated pins
+2101:
+Node IDs Table
+
+
+
+2102:
+Baudrates Table
+
+
+
+2200:
+Manufacturer Error Description
+
+
+Subindex 1: CANOpen errors
+bit 0 - Pasisive Error
+bit 1 - Bus Off
+bit 2 - Overflow
+bit 3 - TX Overflow
+bit 4 - RX Overflow

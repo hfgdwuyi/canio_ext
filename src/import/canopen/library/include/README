@@ -1,0 +1,30 @@
+Order for Include files:
+
+Each include file contains only defines for the specific service
+
+co_acces.h	access to the object dictionary
+co_debug.h	debug interface
+co_def.h	compiler specific defines
+co_drv.h	driver interface
+co_emcy.h	emergency handling
+co_flag.h	internal error and CAN flags
+co_guard.h	node guarding usage
+co_hb.h		heartbeat usage
+co_lme.h	layer management
+co_mcpy.h	hardware specific memcpy
+co_mpdo.h	multiplexed pdo
+co_nmt.h	network management
+co_nmt_m.h	network management only for master
+co_odidx.h	object dictionary index defines
+co_pdo.h	pdo usage
+co_sdo.h	sdo usage
+co_sdomg.h	sdo manager usage
+co_sdorq.h	sdo requester usage
+co_setcp.h	set internal communication parameter
+co_stor.h	store usage
+co_stru.h	structure defines
+co_sync.h	sync usage
+co_time.h	time usage
+co_type.h	type definition
+co_usr.h	user interface
+co_util.h	utilities

@@ -1,0 +1,60 @@
+{
+    "env": {
+        "commonIncludePath": [
+            "${workspaceFolder}/../common",
+            "${workspaceFolder}/../bsp",
+            "${workspaceFolder}/../external",
+            "${workspaceFolder}/../debug",
+            "${workspaceFolder}/../bootloader/main",
+            "${workspaceFolder}/../bootloader/diag",
+            "${workspaceFolder}/../bootloader/obj_dic",
+            "${workspaceFolder}/../bootloader/core",
+            "${workspaceFolder}/../bootloader/usbd",
+            "${workspaceFolder}/../import/canopen/library/include",
+            "${workspaceFolder}/../import/canopen/library/source",
+            "${workspaceFolder}/../import/canopen/drivers/stm32_h7",
+            "${workspaceFolder}/../import/canopen/drivers/shar_inc",
+            "${workspaceFolder}/../import/STM32H7xx_HAL_Driver/Inc",
+            "${workspaceFolder}/../import/STM32H7xx_HAL_Driver/Inc/Legacy",
+            "${workspaceFolder}/../import/CMSIS/Device/ST/STM32H7xx/Include",
+            "${workspaceFolder}/../import/STM32_USB_Device_Library/Core/Inc",
+            "${workspaceFolder}/../import/CMSIS/Include"
+        ],
+        "commonDefines": [
+            "UNICODE",
+            "_UNICODE",
+            "USE_FULL_LL_DRIVER",
+            "USE_HAL_DRIVER",
+            "STM32H750xx",
+            "DATA_IN_D2_SRAM",
+            "USE_USB_FS",
+            "CORE_CM7",
+            "QSPI_ENABLE",
+            "USB_FS_ENABLED",
+            "BOOTLOADER"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${commonIncludePath}"
+            ],
+            "defines": [
+                "${commonDefines}"
+            ],
+            "configurationProvider": "ms-vscode.makefile-tools"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${commonIncludePath}"
+            ],
+            "defines": [
+                "${commonDefines}"
+            ],
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

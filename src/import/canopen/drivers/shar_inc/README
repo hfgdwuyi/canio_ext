@@ -1,0 +1,212 @@
+$Date: 2016/11/14 13:34:10 $
+$Author: jsc $
+
+Shared include for CAN and micro controller. 
+
+CAN driver modul headers
+------------------------
+can_320.h	TI TMS320F2407A internal
+can_82527.h	82527,C5x5,C167,C164
+can_89c51.h	Atmel 89c51 depend additional CANary header
+can_90540.h	MB90F543, MB90F497
+can_arcom.h	Arcom PC104 CAN board for WinCE
+can_am335x.h  TI sitara (ARM Cortex A8, internal DCAN)
+can_at91.h	Atmel AT91SAM7A2 internal CAN
+can_at91sam7a3.h Atmel AT91SAM7A3 internal CAN header
+can_at91sam7x.h Atmel AT91SAM7X internal CAN header
+can_at91sam9263.h Atmel AT91SAM9263 internal CAN header
+can_atsam4e.h Atmel ATSAM4E internal CAN header
+can_avr32.h	Atmel AT32UC3C0512 internal CAN header
+can_avr.h	Atmel AVR depend additional CANary header
+can_bxcan.h	ST STM3210x, STM32F2xx, STM32F4xx, STM32F3xx, STM32L4xx, STM32F7xx
+can_bxcan_stm32f0.h	ST STM32F0xx
+can_bxcan_virtual_multiline.h	ST STM3210x
+can_can4linux.h	Linux can4linux driver
+can_canary.h	Atmel CANary Controller
+can_ccan.h	Bosch C_CAN
+can_cpc.h	CPC header
+can_dcan.h  Bosch D_CAN
+can_dcan_tm4c.h  Bosch D_CAN (special variant)
+can_dcan_tms320.h  Bosch D_CAN (special variant)
+can_dcan_tms570.h  Bosch D_CAN (special variant)
+can_dcan_msp432x.h Bosch D_CAN (TI MSP432E4x variant like TI Tiva)
+can_dspic30f.h	MicroChip dsPIC CAN
+can_dspic33epxx.h variant from MicroChip dsPIC CAN
+can_dspic33evxx.h variant from MicroChip dsPIC CAN
+can_ecan.h	eCAN, TI TMS320C281x
+can_fcn.h	renesas NECV850Fx4, V850E2/ML4 + R-IN32M3
+can_f28m35x.h   TI C2000 Concerto DCAN
+can_flexcan.h	Freescale FlexCAN 
+can_flexcan_kinetis.h	Freescale FlexCAN for Kinetis cpu family
+can_stm32_fdcan.h	ST STM32G4xx (FDCAN)
+can_generic.h	generic header
+can_hecc.h	TI HECC (High End CAN controller like TI eCAN)
+can_horch.h	horch interface
+can_ipc_143.h	Beck IPC header
+can_ixxat_vci.h  IXXAT PC interface windows
+can_lpc21.h	NXP LPC17xx, 40xx, 21xx, 23xx internal CAN header
+can_lx.h	Level-X Win32 header
+can_m16c.h	Renesas M16C header
+can_mcp2517fd.h Microchip extended CAN controller MCP2517FD
+can_mscan.h	Freescale msCAN8, msCAN12, msCAN12 Rev2, msCANS08 Rev1 (e.d. HC908GZ60, HCS12, DSP 5680x, Kinetis KE06)
+can_multican.h  MultiCAN XE164 (XC800 planned)
+can_multican_aurix.h  MultiCAN+ (Aurix TC23x)
+can_multican_xmc4500.h  MultiCAN XMC4500
+can_multican_xmc4800.h  MultiCAN XMC4800
+can_multican_xmc4200.h  MultiCAN XMC4200
+can_multican_xmc4300.h  MultiCAN XMC4300
+can_pic32mx.h  Microchip PIC32 CAN
+can_p_l.h	Peak light header
+can_rcan_sh72544r.h RENESAS RCAN for SH72544R
+can_rl78f13.h   Renesas RL78F13
+can_rl78f14.h   Renesas RL78F14
+can_rscan.h     Renesas RSCAN
+can_rscan_rh850.h  Renesas RSCAN in a RH850 cpu
+can_rscan_rzt1.h   Renesas RSCAN base on RZ/T1
+can_rx63n.h     renesas rx63n
+can_rx62n.h     renesas rx62n
+can_rx64m.h     renesas rx64m
+can_rx65n.h     renesas rx65n
+can_rx71m.h     renesas rx71m
+can_rx72m.h     renesas rx72m
+can_s32.h 		nxp s32k144
+can_sciopta.h	Sciopta real time OS
+can_sja1000.h	SJA1000 Pelican mode
+can_socketcan.h	Linux SocketCAN driver
+can_synergy.h   Renesas synergy CAN interface
+can_toucan.h	Freescale TouCAN 
+can_twincan.h	TwinCAN header XC164
+can_vector.h    Vector XL Driver Library
+can_xilinx_xcan.h  Xilinx XCAN
+can_xzync_qnx.h  Xilinx XZYNC with QNX Posix interface
+cdriver.h	hardware independend functions
+common68k.h	CPU 68000
+mcu68332.h	68332
+mcu68376.h	68376
+
+
+
+
+cpu driver moduls headers
+-------------------------
+cpu_166.h	common C166 cpu functions
+cpu_320.h	common TMS320 cpu functions
+cpu_56800.h	common DSP 56800 functions
+cpu_56f8300.h	common Hybrid 56800E functions
+cpu_mc56f827.h	common freescale MC56f827xx functions
+cpu_68332.h	common 68332 functions
+cpu_8051.h	common 8051 cpu functions
+cpu_90540.h	common Fujitsu MB90F540 functions
+cpu_91460.h	common Fujitsu MB91F460 functions
+cpu_96340.h	common Fujitsu MB96F340 functions
+cpu_mb9b524k.h	common Fujitsu MB9B524K functions
+cpu_mb9bf51x.h	common Fujitsu/Spansion MB9BF51x functions
+cpu_arm7.h	common ARM7 cpu functions
+cpu_at91sam7a3.h common AT91SAM7A3 functions
+cpu_at91sam7x.h common AT91SAM7X functions
+cpu_at91sam9263.h common AT91SAM9263 functions
+cpu_atsam4e.h common ATSAM4E functions
+cpu_atsam4e_uCOSII.h common ATSAM4E with uCOSII functions
+cpu_atsam4e_freertos.h common ATSAM4E with FreeRTOS functions
+cpu_aurix.h	common infineon Aurix functions
+cpu_av32.h	common AT32UC3C0512 functions
+cpu_avr.h	common AVR cpu functions	
+cpu_dspic30f.h	common dsPIC cpu functions
+cpu_mc.h	common dsPIC33x cpu header
+cpu_embos.h	common embOS functions
+cpu_f28m35x.h   common TI C2000 Concerto
+cpu_hc08.h	common HC08 cpu functions
+cpu_hcs12.h	common HCS12 cpu functions
+cpu_ipc_143.h	common Beck IPC cpu functions
+cpu_kinetis_k2x.h  common K2x cpu functions
+cpu_kinetis.h  common Kinetis cpu functions
+cpu_kinetis_uCOSII.h  common Kinetis cpu functions with uCOSII support
+cpu_lpc17.h	common LPC17xx functions
+cpu_lpc40xx.h	common LPC40xx functions
+cpu_lpc15.h	common LPC15xx functions
+cpu_m16c.h	common Renesas M16C functions
+cpu_m68k.h	common 68k cpu functions
+cpu_mc9s08.h	common MC9S08 functions
+cpu_mpc5xx.h	common MPC500 cpu functions
+cpu_msp432x_freertos.h  common MSP432E4x cpu functions
+cpu_pic32mx.h	common Microchip PIC32 functions
+cpu_rh850.h     common RH850 functions
+cpu_rzt1_r4f.h  common RZ/T1 R4F functions
+cpu_rl78f13.h   common Renesas RL78F13
+cpu_rl78f14.h   common Renesas RL78F14
+cpu_rx63n.h     common rx63n
+cpu_rx62n.h     common rx62n
+cpu_rx64m.h     common rx64m
+cpu_rx65n_freertos.h   common Renesas rx65n with FreeRTOS functions
+cpu_rx71m.h     common rx71m
+cpu_rx72m.h     common rx72m
+cpu_rx231.h     common rx231
+cpu_rin32m3.h    common R-IN32M3
+cpu_s32.h 		common S32K144 functions
+cpu_s12z.h 		common NXP S12Z functions
+cpu_sh72544r.h	common sh72544r functions
+cpu_stm32.h	common ST STM32F10x functions
+cpu_stm32_f2.h	common ST STM32F2xx functions
+cpu_stm32_f4.h	common ST STM32F4xx functions
+cpu_stm32_f0.h	common ST STM32F0xx functions
+cpu_stm32_f3.h	common ST STM32F3xx functions
+cpu_stm32_f7.h	common ST STM32F7xx functions
+cpu_stm32_g4.h	common ST STM32G4xx functions
+cpu_stm32_h7.h	common ST STM32H7xx functions
+cpu_stm32_freertos.h	common ST STM32 with FreeRTOS functions
+cpu_stm32_threadx.h	common ST STM32 with ThreadX functions
+cpu_stm32_keil_rtx.h	common ST STM32 with Keil RTX functions
+cpu_tm4c_freertos.h	common TI Tiva with FreeRTOS functions
+cpu_tm4c.h           common TI Tiva (Bare-Metal)
+cpu_tms570.h	common TI Hercules functions
+cpu_str911.h	common STR911 functions
+cpu_sysbios.h 	common TI sysbios functions
+cpu_synergy.h   Renesas synergy plattform
+cpu_v850e2fx4.h common NECV850Fx4 functions
+cpu_v850e2ml4.h	common Renesas V850E2/ML4 functions
+cpu_vxworks.h	common vxWorks functions
+cpu_wince.h	common WinCE
+cpu_win.h	common WIN32 functions
+cpu_xe166.h	common XE166 cpu functions
+cpu_xmc4500.h	common infineon XMC4500 functions
+cpu_xmc4800.h	common infineon XMC4800 functions
+cpu_xmc4200.h	common infineon XMC4200 functions
+cpu_xmc4300.h	common infineon XMC4300 functions
+cpu_xilinx_zync7000.h common xilinx zync7000 functions
+
+hardware independend Timer Functionality
+----------------------------------------
+cpu_common.h	function to call from customer periodic interrupt
+
+compiler specific headers
+-------------------------
+co_borland.h		Borland C++ (not supported since 2011)
+co_codecomposer.h	Code Composer, Code Composer Studio
+co_codewarrior.h	Code Warrior
+co_cosmic.h		Cosmic
+co_crossworks.h		Rowley CrossWorks (Cross Studio)
+co_cubeSuite.h		CubeSuite+ (Renesas)
+co_gcc.h		GCC
+co_hew.h                HEW renesas compiler rx-family
+co_iar.h		IAR Compiler
+co_keil.h		Keil
+co_mplabc30.h		MPLAB
+co_nc30.h		Renesas NC30 Compiler
+co_paradigm.h		Paradigm
+co_softune.h		Softune Workbench
+co_tasking.h		Tasking
+co_vc.h			Microsoft Visual C, testet with 2008, 2010
+
+co_default.h		Default Settings
+
+other
+-----
+m4d_drv.h	special routines for m4d
+can_busload.h	busload measurement
+
+
+partly needed
+=============
+Project specific hardware settings, like Headers for the hardware,
+are located in the adaptation directory, header: 'environ.h'.
+
