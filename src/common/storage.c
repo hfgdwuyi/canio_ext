@@ -253,11 +253,15 @@ bool storageLoadSegment(uint8_t segment)
             }
             // Copy data to the object
             memcpy(data, &storageBuffer[address], size);
-            address += size;
 
             // Increment found counter
             recordsFound++;
         }
+
+        // Always skip the payload. Records of objects that are no longer marked
+        // for non-volatile storage (e.g. after a firmware update removed the
+        // storage attribute) must not break parsing of the following records.
+        address += header.size;
         WTDG_Feed();
     } while ((header.size != 0) && (address < STORAGE_SEGMENT_SIZE));
 
