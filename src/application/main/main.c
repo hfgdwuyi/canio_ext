@@ -70,9 +70,7 @@ static terminalRet terminalVersion(uint8_t argc, char **argv)
 {
     (void)argc;
     (void)argv;
-    printf("FW %d.%d.%d-%s Application, built %s %s\n",
-           APP_SW_VERSION, APP_SW_SUBVERSION, APP_SW_REVISION,
-           APP_SW_BUILD_TAG, __DATE__, __TIME__);
+    printf("FW %s, built %s %s\n", APP_SW_VERSION_STR, __DATE__, __TIME__);
     return SHELL_OK;
 }
 
@@ -177,9 +175,7 @@ static void updateODValues(void)
 
     // The SW version is owned by the running firmware image: overwrite the
     // stored value here (after loadParameterInd) so EEPROM cannot override it.
-    snprintf((char *)manSWVersion, sizeof(manSWVersion),
-             "%d.%d.%d-%s Application",
-             APP_SW_VERSION, APP_SW_SUBVERSION, APP_SW_REVISION, APP_SW_BUILD_TAG);
+    snprintf((char *)manSWVersion, sizeof(manSWVersion), "%s", APP_SW_VERSION_STR);
 
     // Copy Manufacturer Software Version to object 0x100A
     ret = getObjAddr(0x200A, 0, (UNSIGNED8 **)&src, &srcSize CO_COMMA_LINE_PARA);
@@ -271,8 +267,7 @@ int main(void)
 
     printf("Application started\n");
     printf("Built %s %s\n", __DATE__, __TIME__);
-    printf("FW %d.%d.%d-%s Application\n",
-           APP_SW_VERSION, APP_SW_SUBVERSION, APP_SW_REVISION, APP_SW_BUILD_TAG);
+    printf("FW %s\n", APP_SW_VERSION_STR);
     // Copy CAN config pins state to the OD's variable
     canCfgSetCode();
     ENABLE_CPU_INTERRUPTS();
